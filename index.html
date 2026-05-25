@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chega de Chutar Preço — Orçamentos Inteligentes para Pintores e Reformistas</title>
+  <meta name="description" content="Monte orçamentos profissionais em minutos com a tabela de preços certa para pintores e reformistas. Mais de 150 serviços com faixa de preço de mercado." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #1a3b5a;
+      --teal-light: #234d76;
+      --teal-dark:  #112840;
+      --yellow:     #F7C026;
+      --yellow-dark:#d9a81e;
+      --bg:         #eef2f7;
+      --bg-warm:    #f5f3ef;
+      --white:      #ffffff;
+      --text:       #1a2a3a;
+      --text-muted: #5a7080;
+      --red-soft:   #ffeaea;
+      --red-icon:   #d94040;
+      --radius-sm:  10px;
+      --radius:     18px;
+      --radius-lg:  28px;
+      --shadow-sm:  0 2px 12px rgba(26,59,90,.08);
+      --shadow:     0 8px 32px rgba(26,59,90,.12);
+      --shadow-lg:  0 20px 60px rgba(26,59,90,.18);
+      --transition: .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── UTILITY ─────────────────────────────────────────── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    .section--sm { padding: 72px 0; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .65s var(--transition), transform .65s var(--transition);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* ─── NAV ──────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,59,90,.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding: 14px 0;
+      transition: var(--transition);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--white);
+    }
+    .logo-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 15px;
+      line-height: 1; letter-spacing: -1px;
+      flex-shrink: 0;
+    }
+    .logo-icon span:first-child { color: var(--teal); }
+    .logo-icon span:last-child  { color: var(--yellow); }
+    .logo-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px; }
+    .logo-sub  { font-size: 11px; color: rgba(255,255,255,.5); display: block; line-height: 1.2; }
+
+    .nav-cta {
+      background: var(--yellow); color: var(--teal);
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
+      padding: 10px 22px; border-radius: 50px; text-decoration: none;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--yellow-dark); transform: translateY(-1px); }
+
+    /* ─── HERO ─────────────────────────────────────────────── */
+    .hero {
+      background: var(--teal);
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 120px 0 80px;
+    }
+
+    /* geometric background texture */
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .hero-bg svg { width: 100%; height: 100%; opacity: .07; }
+
+    /* paint splash decoration */
+    .hero-splash {
+      position: absolute; right: -60px; top: 50%;
+      transform: translateY(-50%);
+      width: 560px; height: 560px;
+      opacity: .12; pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(247,192,38,.15); color: var(--yellow);
+      border: 1px solid rgba(247,192,38,.3);
+      padding: 6px 16px; border-radius: 50px;
+      font-size: 13px; font-weight: 600; letter-spacing: .03em;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--yellow);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .4; transform: scale(.7); }
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(42px, 7vw, 80px);
+      line-height: 1.0;
+      color: var(--white);
+      letter-spacing: -.02em;
+      margin-bottom: 10px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--yellow);
+      position: relative;
+    }
+    .hero h1 em::after {
+      content: '';
+      position: absolute; bottom: 2px; left: 0; right: 0; height: 4px;
+      background: var(--yellow); border-radius: 2px; opacity: .4;
+    }
+
+    .hero-sub {
+      font-size: clamp(17px, 2.5vw, 21px);
+      color: rgba(255,255,255,.72);
+      margin: 24px 0 40px;
+      max-width: 560px;
+      font-weight: 400;
+      line-height: 1.55;
+    }
+
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--yellow); color: var(--teal);
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 17px;
+      padding: 17px 36px; border-radius: 50px; text-decoration: none;
+      box-shadow: 0 8px 28px rgba(247,192,38,.4);
+      transition: var(--transition);
+    }
+    .btn-primary:hover {
+      background: var(--yellow-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(247,192,38,.5);
+    }
+    .btn-primary svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    .hero-note {
+      color: rgba(255,255,255,.45);
+      font-size: 13px;
+    }
+
+    .hero-stats {
+      display: flex; gap: 40px; margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      flex-wrap: wrap; gap: 32px;
+    }
+    .hero-stat-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 36px; font-weight: 800;
+      color: var(--yellow); line-height: 1;
+      display: block;
+    }
+    .hero-stat-label {
+      font-size: 13px; color: rgba(255,255,255,.5);
+      margin-top: 4px; display: block;
+    }
+
+    /* ─── PAIN SECTION ─────────────────────────────────────── */
+    .pain { background: var(--bg-warm); }
+
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--yellow-dark);
+      margin-bottom: 12px; display: block;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.1; letter-spacing: -.02em;
+      color: var(--text);
+    }
+    .section-title span { color: var(--teal); }
+    .section-sub {
+      font-size: 18px; color: var(--text-muted);
+      margin-top: 16px; max-width: 560px;
+      line-height: 1.6;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px; margin-top: 56px;
+    }
+
+    .pain-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      border-left: 5px solid var(--red-icon);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .pain-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--red-soft); opacity: 0;
+      transition: var(--transition);
+    }
+    .pain-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .pain-card:hover::before { opacity: 1; }
+    .pain-card > * { position: relative; z-index: 1; }
+
+    .pain-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--red-soft);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .pain-icon svg { width: 26px; height: 26px; color: var(--red-icon); }
+
+    .pain-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 19px; font-weight: 700;
+      line-height: 1.25; color: var(--text);
+      margin-bottom: 10px;
+    }
+    .pain-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ─── SOLUTION ─────────────────────────────────────────── */
+    .solution { background: var(--white); }
+
+    .solution-header { margin-bottom: 60px; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .feature-card::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--teal), var(--yellow));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .4s var(--transition);
+    }
+    .feature-card:hover {
+      border-color: rgba(26,59,90,.1);
+      background: var(--white);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+    .feature-card:hover::after { transform: scaleX(1); }
+
+    .feature-icon {
+      width: 56px; height: 56px; border-radius: 16px;
+      background: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+    }
+    .feature-icon svg { width: 28px; height: 28px; color: var(--yellow); }
+
+    .feature-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--text); margin-bottom: 10px;
+    }
+    .feature-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
+
+    .feature-pill {
+      display: inline-block; margin-top: 16px;
+      background: rgba(26,59,90,.08); color: var(--teal);
+      font-size: 12px; font-weight: 700; letter-spacing: .04em;
+      padding: 5px 12px; border-radius: 50px;
+    }
+
+    /* ─── HOW IT WORKS ─────────────────────────────────────── */
+    .how { background: var(--teal); }
+
+    .how .section-title { color: var(--white); }
+    .how .section-label { color: rgba(247,192,38,.7); }
+    .how .section-sub { color: rgba(255,255,255,.6); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0; margin-top: 64px;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute; top: 36px; left: 14%; right: 14%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(247,192,38,.0), rgba(247,192,38,.4), rgba(247,192,38,.0));
+      display: none;
+    }
+    @media(min-width: 768px) { .steps::before { display: block; } }
+
+    .step {
+      text-align: center; padding: 0 24px;
+      position: relative;
+    }
+
+    .step-number {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--yellow);
+      color: var(--teal);
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 28px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 28px;
+      box-shadow: 0 8px 24px rgba(247,192,38,.3);
+      position: relative; z-index: 1;
+    }
+
+    .step h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .step p { font-size: 15px; color: rgba(255,255,255,.6); line-height: 1.6; }
+
+    .step-arrow {
+      display: none; position: absolute;
+      top: 22px; right: -20px; z-index: 2;
+      color: var(--yellow); opacity: .5;
+    }
+    @media(min-width: 768px) {
+      .step:not(:last-child) .step-arrow { display: block; }
+    }
+
+    /* ─── TESTIMONIALS ─────────────────────────────────────── */
+    .testimonials { background: var(--bg); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px; margin-top: 56px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+    .stars { display: flex; gap: 4px; }
+    .stars svg { width: 18px; height: 18px; color: var(--yellow); }
+
+    .testimonial-text {
+      font-size: 16px; line-height: 1.7;
+      color: var(--text);
+      font-style: italic;
+      flex: 1;
+    }
+    .testimonial-text::before { content: '"'; }
+    .testimonial-text::after  { content: '"'; }
+
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px;
+      color: var(--yellow); flex-shrink: 0;
+    }
+    .author-name {
+      font-weight: 700; font-size: 15px; color: var(--text); display: block;
+    }
+    .author-role {
+      font-size: 13px; color: var(--text-muted); display: block; margin-top: 2px;
+    }
+
+    /* ─── PRICING ──────────────────────────────────────────── */
+    .pricing { background: var(--white); }
+
+    .pricing-card {
+      max-width: 600px; margin: 60px auto 0;
+      background: var(--teal);
+      border-radius: var(--radius-lg);
+      padding: 60px 48px;
+      text-align: center;
+      position: relative; overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: rgba(247,192,38,.1);
+    }
+    .pricing-card::after {
+      content: '';
+      position: absolute; bottom: -40px; left: -40px;
+      width: 140px; height: 140px; border-radius: 50%;
+      background: rgba(247,192,38,.07);
+    }
+
+    .pricing-tag {
+      display: inline-block;
+      background: rgba(247,192,38,.15); color: var(--yellow);
+      border: 1px solid rgba(247,192,38,.3);
+      font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 50px;
+      margin-bottom: 24px;
+    }
+
+    .pricing-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 4vw, 42px); font-weight: 800;
+      color: var(--white); line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .pricing-card h2 em {
+      font-style: normal; color: var(--yellow);
+    }
+
+    .pricing-card p {
+      font-size: 17px; color: rgba(255,255,255,.65);
+      margin-bottom: 36px; line-height: 1.6;
+    }
+
+    .pricing-features {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 14px;
+      margin-bottom: 40px; text-align: left;
+      position: relative; z-index: 1;
+    }
+    .pricing-features li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 16px; color: rgba(255,255,255,.85);
+    }
+    .pricing-features li svg {
+      width: 20px; height: 20px; color: var(--yellow); flex-shrink: 0;
+    }
+
+    .btn-cta-big {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--yellow); color: var(--teal);
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px;
+      padding: 20px 48px; border-radius: 50px; text-decoration: none;
+      box-shadow: 0 8px 28px rgba(247,192,38,.45);
+      transition: var(--transition);
+      position: relative; z-index: 1; width: 100%;
+      justify-content: center;
+    }
+    .btn-cta-big:hover {
+      background: var(--yellow-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(247,192,38,.55);
+    }
+
+    .pricing-note {
+      font-size: 13px; color: rgba(255,255,255,.4);
+      margin-top: 16px; position: relative; z-index: 1;
+    }
+
+    /* ─── FOOTER ───────────────────────────────────────────── */
+    footer {
+      background: var(--teal-dark);
+      padding: 48px 0 32px;
+    }
+
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      margin-bottom: 28px;
+    }
+
+    .footer-brand .logo-sub { color: rgba(255,255,255,.35); }
+
+    .footer-tagline {
+      font-size: 14px; color: rgba(255,255,255,.4);
+      margin-top: 8px;
+    }
+
+    .footer-cta-small {
+      background: var(--yellow); color: var(--teal);
+      font-weight: 700; font-size: 15px;
+      padding: 14px 32px; border-radius: 50px; text-decoration: none;
+      transition: var(--transition);
+    }
+    .footer-cta-small:hover { background: var(--yellow-dark); }
+
+    .footer-copy {
+      font-size: 13px; color: rgba(255,255,255,.25); text-align: center;
+    }
+
+    /* ─── FLOATING CTA ─────────────────────────────────────── */
+    .floating-cta {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      display: none;
+    }
+    .floating-cta.show { display: flex; }
+    .floating-cta a {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--yellow); color: var(--teal);
+      font-weight: 700; font-size: 15px;
+      padding: 14px 24px; border-radius: 50px; text-decoration: none;
+      box-shadow: 0 8px 28px rgba(247,192,38,.4);
+      transition: var(--transition);
+    }
+    .floating-cta a:hover {
+      background: var(--yellow-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(247,192,38,.5);
+    }
+    .floating-cta svg { width: 18px; height: 18px; }
+
+    /* ─── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .section { padding: 72px 0; }
+      .hero { min-height: auto; padding: 100px 0 64px; }
+      .hero-stats { gap: 24px; }
+      .hero-splash { display: none; }
+      .pricing-card { padding: 40px 28px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <span>P</span><span>S</span>
+      </div>
+      <div>
+        <span class="logo-name">PS Pro</span>
+        <span class="logo-sub">Orçamentos Inteligentes</span>
+      </div>
+    </a>
+    <a href="https://orcamentopro.ori.lat/login" class="nav-cta">Começar Grátis →</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section class="hero" id="inicio">
+  <div class="hero-bg" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+    </svg>
+  </div>
+
+  <!-- Paint roller decoration -->
+  <div class="hero-splash" aria-hidden="true">
+    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="250" cy="250" r="240" fill="white" opacity=".5"/>
+      <circle cx="250" cy="250" r="180" fill="white" opacity=".4"/>
+      <circle cx="250" cy="250" r="120" fill="white" opacity=".3"/>
+      <path d="M150 100 Q250 50 350 100 Q420 200 350 280 Q280 360 180 320 Q80 280 80 200 Q80 130 150 100Z" fill="white" opacity=".6"/>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">Para Pintores e Reformistas</div>
+
+      <h1>
+        Chega de<br />
+        <em>Chutar</em><br />
+        Preço!
+      </h1>
+
+      <p class="hero-sub">
+        Monte orçamentos profissionais em minutos com a tabela de preços certa.
+        Mais de 150 serviços com faixa de preço de mercado — nunca mais cobrar barato demais.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://orcamentopro.ori.lat/login" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Começar Grátis
+        </a>
+        <span class="hero-note">Sem cartão de crédito · Acesse agora</span>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <span class="hero-stat-value">150+</span>
+          <span class="hero-stat-label">serviços com preço de mercado</span>
+        </div>
+        <div>
+          <span class="hero-stat-value">3 min</span>
+          <span class="hero-stat-label">para montar um orçamento completo</span>
+        </div>
+        <div>
+          <span class="hero-stat-value">R$ 0</span>
+          <span class="hero-stat-label">para começar a usar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PAIN ──────────────────────────────────────────────── -->
+<section class="section pain" id="problema">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Você se identifica com isso?</span>
+      <h2 class="section-title">A dor de todo <span>profissional de pintura</span></h2>
+      <p class="section-sub">Se você é pintor, reformista ou prestador de serviços, sabe bem o que é isso.</p>
+    </div>
+
+    <div class="pain-grid">
+      <div class="pain-card reveal reveal-delay-1">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+          </svg>
+        </div>
+        <h3>Cobra barato demais e sai no prejuízo</h3>
+        <p>Você "chuta" um preço, o cliente aceita na hora — e só depois você descobre que trabalhou de graça ou até perdeu dinheiro.</p>
+      </div>
+
+      <div class="pain-card reveal reveal-delay-2">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3>Perde horas montando um orçamento</h3>
+        <p>Cada orçamento é uma tarde inteira de cálculo, pesquisa de preço e formatação — tempo que poderia estar sendo usado na obra.</p>
+      </div>
+
+      <div class="pain-card reveal reveal-delay-3">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/>
+          </svg>
+        </div>
+        <h3>Passa proposta no papel ou no WhatsApp</h3>
+        <p>Sem profissionalismo, sem credibilidade. O cliente compara seu orçamento escrito à mão com o do concorrente — e não te contrata.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOLUTION ──────────────────────────────────────────── -->
+<section class="section solution" id="solucao">
+  <div class="container">
+    <div class="solution-header reveal">
+      <span class="section-label">A solução</span>
+      <h2 class="section-title">Conheça o <span>PS Pro</span></h2>
+      <p class="section-sub">Tudo que você precisa para orçar com confiança, ganhar mais e parecer profissional.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+          </svg>
+        </div>
+        <h3>Tabela de Preços Completa</h3>
+        <p>Mais de 150 serviços de pintura e reforma com preço de referência e faixa mínima–máxima do mercado.</p>
+        <span class="feature-pill">150+ serviços</span>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <h3>Orçamento em Minutos</h3>
+        <p>Selecione o cliente, adicione os serviços e as quantidades. O total é calculado automaticamente.</p>
+        <span class="feature-pill">Super rápido</span>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </div>
+        <h3>Controle Total do Negócio</h3>
+        <p>Acompanhe orçamentos pendentes, fechados e recusados. Veja exatamente quanto você faturou.</p>
+        <span class="feature-pill">Dashboard completo</span>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-4">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+        </div>
+        <h3>Funciona no Celular</h3>
+        <p>Instale como um aplicativo no seu celular. Use na obra, na rua, em qualquer lugar — sem depender de computador.</p>
+        <span class="feature-pill">App no celular</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ──────────────────────────────────────── -->
+<section class="section how" id="como-funciona">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width: 560px; margin: 0 auto;">
+      <span class="section-label">Como funciona</span>
+      <h2 class="section-title">3 passos para nunca mais chutar preço</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal reveal-delay-1">
+        <div class="step-number">1</div>
+        <svg class="step-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <h3>Cadastre seus clientes</h3>
+        <p>Adicione o nome e os dados do cliente. Em segundos, está pronto para receber orçamentos.</p>
+      </div>
+
+      <div class="step reveal reveal-delay-2">
+        <div class="step-number">2</div>
+        <svg class="step-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <h3>Monte o orçamento</h3>
+        <p>Escolha os serviços da tabela, informe a quantidade. O preço de mercado é preenchido automaticamente.</p>
+      </div>
+
+      <div class="step reveal reveal-delay-3">
+        <div class="step-number">3</div>
+        <h3>Envie e acompanhe</h3>
+        <p>Compartilhe o orçamento profissional com o cliente e acompanhe o status em tempo real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ──────────────────────────────────────── -->
+<section class="section testimonials" id="depoimentos">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width:560px; margin: 0 auto;">
+      <span class="section-label">Quem já usa</span>
+      <h2 class="section-title">Pintores que <span>pararam de perder dinheiro</span></h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">Antes eu ficava olhando para a parede sem saber quanto cobrar. Hoje abro o app, escolho o serviço e já sei o preço certo. Nunca mais saí de uma obra no prejuízo.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RS</div>
+          <div>
+            <span class="author-name">Rodrigo Santos</span>
+            <span class="author-role">Pintor autônomo · São Paulo, SP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">O que me convenceu foi a tabela com os preços mínimo e máximo. Agora sei exatamente se estou cobrando dentro do mercado. Meu faturamento aumentou mais de 30% no primeiro mês.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MC</div>
+          <div>
+            <span class="author-name">Marcos Cardoso</span>
+            <span class="author-role">Reformista · Curitiba, PR</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">Mandava orçamento no papel e os clientes não levavam a sério. Agora envio pelo app, parece coisa de empresa grande. Fechei 3 obras na primeira semana usando o PS Pro.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AF</div>
+          <div>
+            <span class="author-name">Andréia Ferreira</span>
+            <span class="author-role">Pintora · Belo Horizonte, MG</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ───────────────────────────────────────────── -->
+<section class="section pricing" id="planos">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Preços</span>
+      <h2 class="section-title">Simples como deve ser</h2>
+    </div>
+
+    <div class="pricing-card reveal">
+      <div class="pricing-tag">Comece hoje mesmo</div>
+      <h2>Comece <em>grátis</em> agora</h2>
+      <p>Crie sua conta, monte seu primeiro orçamento e veja na prática como é fácil cobrar o preço certo.</p>
+
+      <ul class="pricing-features">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Acesso à tabela com 150+ serviços de pintura e reforma
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Criação ilimitada de clientes e orçamentos
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Dashboard com controle de orçamentos e faturamento
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Funciona no celular como aplicativo (PWA)
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Orçamentos com validade, observações e desconto
+        </li>
+      </ul>
+
+      <a href="https://orcamentopro.ori.lat/login" class="btn-cta-big">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        Criar minha conta grátis
+      </a>
+      <p class="pricing-note">Sem cartão de crédito. Acesso imediato.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <span>P</span><span>S</span>
+          </div>
+          <div>
+            <span class="logo-name">PS Pro</span>
+            <span class="logo-sub">Orçamentos Inteligentes</span>
+          </div>
+        </a>
+        <p class="footer-tagline">Chega de chutar preço. Comece a lucrar de verdade.</p>
+      </div>
+      <a href="https://orcamentopro.ori.lat/login" class="footer-cta-small">Começar Grátis →</a>
+    </div>
+    <p class="footer-copy">© 2025 PS Pro — Orçamentos Inteligentes. Feito para pintores e reformistas brasileiros.</p>
+  </div>
+</footer>
+
+<!-- ─── FLOATING CTA ──────────────────────────────────────── -->
+<div class="floating-cta" id="floatingCta">
+  <a href="https://orcamentopro.ori.lat/login">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+    Começar Grátis
+  </a>
+</div>
+
+<script>
+  // ── Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── Floating CTA visibility
+  const floatingCta = document.getElementById('floatingCta');
+  const heroCta = document.querySelector('.hero-actions');
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      floatingCta.classList.toggle('show', !e.isIntersecting);
+    });
+  }, { threshold: 0.5 });
+  if (heroCta) heroObserver.observe(heroCta);
+
+  // ── Nav shadow on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 40
+      ? '0 4px 24px rgba(0,0,0,.25)'
+      : 'none';
+  }, { passive: true });
+</script>
+</body>
+</html>
