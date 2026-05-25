@@ -126,28 +126,97 @@
       position: relative; z-index: 2;
     }
 
+    /* ── Phone mockup wrapper ── */
     .hero-mockup {
       position: relative; z-index: 2;
       display: flex; justify-content: center; align-items: center;
     }
-    .hero-mockup img {
-      width: 100%;
-      max-width: 400px;
-      filter: drop-shadow(0 32px 64px rgba(0,0,0,.4));
+
+    .phone-scene {
+      position: relative;
+      width: 260px;
       animation: float 4s ease-in-out infinite;
     }
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-16px); }
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-14px); }
     }
 
+    /* iPhone frame */
+    .phone-frame {
+      position: relative;
+      width: 260px;
+      background: #1a1a1a;
+      border-radius: 40px;
+      padding: 10px;
+      box-shadow:
+        0 0 0 1px #3a3a3a,
+        0 40px 80px rgba(0,0,0,.6),
+        inset 0 1px 0 rgba(255,255,255,.15);
+    }
+    /* notch */
+    .phone-frame::before {
+      content: '';
+      position: absolute; top: 10px; left: 50%;
+      transform: translateX(-50%);
+      width: 90px; height: 24px;
+      background: #1a1a1a;
+      border-radius: 0 0 16px 16px;
+      z-index: 10;
+    }
+    /* side buttons */
+    .phone-frame::after {
+      content: '';
+      position: absolute; right: -3px; top: 80px;
+      width: 3px; height: 60px;
+      background: #2a2a2a; border-radius: 0 2px 2px 0;
+    }
+    .phone-screen {
+      border-radius: 32px;
+      overflow: hidden;
+      position: relative;
+    }
+    .phone-screen img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── Notification badges ── */
+    .notif {
+      position: absolute;
+      background: white;
+      border-radius: 14px;
+      padding: 10px 14px;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.25);
+      white-space: nowrap;
+      z-index: 10;
+      animation: float 4s ease-in-out infinite;
+    }
+    .notif-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .notif-icon svg { width: 18px; height: 18px; }
+    .notif-title { font-size: 12px; font-weight: 700; color: #1a2a3a; line-height: 1.2; display: block; }
+    .notif-sub   { font-size: 11px; color: #7a8a9a; line-height: 1.2; display: block; }
+
+    /* positions & delays */
+    .notif-1 { top: 8%;  left: -90px; animation-delay: 0s; }
+    .notif-2 { top: 38%; right: -100px; animation-delay: 1s; }
+    .notif-3 { bottom: 22%; left: -85px; animation-delay: 1.8s; }
+    .notif-4 { bottom: 5%; right: -80px; animation-delay: .5s; }
+
+    /* colors */
+    .notif-green  .notif-icon { background: #e6f9f0; color: #22c55e; }
+    .notif-blue   .notif-icon { background: #e8f0fe; color: #3b82f6; }
+    .notif-yellow .notif-icon { background: #fff8e1; color: #F7C026; }
+    .notif-teal   .notif-icon { background: #e0f0f8; color: #1a3b5a; }
+
     @media (max-width: 900px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-      .hero-mockup {
-        display: none;
-      }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-mockup { display: none; }
     }
 
     .hero-badge {
@@ -687,7 +756,60 @@
     </div>
 
     <div class="hero-mockup">
-      <img src="mockup/celmao.png" alt="PS Pro app no celular" />
+      <div class="phone-scene">
+
+        <!-- Notificação 1: Orçamento fechado -->
+        <div class="notif notif-1 notif-green">
+          <div class="notif-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <span class="notif-title">Orçamento Fechado!</span>
+            <span class="notif-sub">R$ 7.944,50 · Olavo Bilac</span>
+          </div>
+        </div>
+
+        <!-- Notificação 2: Orçamento enviado -->
+        <div class="notif notif-2 notif-blue">
+          <div class="notif-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </div>
+          <div>
+            <span class="notif-title">Orçamento Enviado</span>
+            <span class="notif-sub">Aline Camargos · agora</span>
+          </div>
+        </div>
+
+        <!-- Notificação 3: Novo cliente -->
+        <div class="notif notif-3 notif-teal">
+          <div class="notif-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <span class="notif-title">Novo Cliente</span>
+            <span class="notif-sub">Claudio Manoel cadastrado</span>
+          </div>
+        </div>
+
+        <!-- Notificação 4: Total faturado -->
+        <div class="notif notif-4 notif-yellow">
+          <div class="notif-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div>
+            <span class="notif-title">R$ 30.641,59</span>
+            <span class="notif-sub">Total faturado este mês</span>
+          </div>
+        </div>
+
+        <!-- Frame do celular -->
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <img src="mockup/3.jpeg" alt="PS Pro dashboard" />
+          </div>
+        </div>
+
+      </div>
     </div>
 
     </div><!-- /hero-inner -->
