@@ -2,52 +2,57 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chega de Chutar Preço — Orçamentos Inteligentes para Pintores e Reformistas</title>
-  <meta name="description" content="Monte orçamentos profissionais em minutos com a tabela de preços certa para pintores e reformistas. Mais de 150 serviços com faixa de preço de mercado." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Chega de Chutar Preço — Pare de perder dinheiro nos seus orçamentos</title>
+  <meta name="description" content="Você está deixando milhares de reais na mesa todo mês. PS Pro é o sistema que mostra o preço certo de cada serviço de pintura e reforma. Comece grátis." />
+  <meta name="theme-color" content="#1a3b5a" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --teal:       #1a3b5a;
-      --teal-light: #234d76;
-      --teal-dark:  #112840;
-      --yellow:     #F7C026;
-      --yellow-dark:#d9a81e;
-      --bg:         #eef2f7;
-      --bg-warm:    #f5f3ef;
-      --white:      #ffffff;
-      --text:       #1a2a3a;
-      --text-muted: #5a7080;
-      --red-soft:   #ffeaea;
-      --red-icon:   #d94040;
-      --radius-sm:  10px;
-      --radius:     18px;
-      --radius-lg:  28px;
-      --shadow-sm:  0 2px 12px rgba(26,59,90,.08);
-      --shadow:     0 8px 32px rgba(26,59,90,.12);
-      --shadow-lg:  0 20px 60px rgba(26,59,90,.18);
-      --transition: .35s cubic-bezier(.4,0,.2,1);
+      --teal:        #1a3b5a;
+      --teal-light:  #234d76;
+      --teal-dark:   #112840;
+      --yellow:      #F7C026;
+      --yellow-dark: #d9a81e;
+      --bg:          #eef2f7;
+      --bg-warm:     #f5f3ef;
+      --white:       #ffffff;
+      --text:        #1a2a3a;
+      --text-muted:  #5a7080;
+      --red-soft:    #ffeaea;
+      --red-icon:    #d94040;
+      --red-strong:  #b91c1c;
+      --radius:      18px;
+      --radius-lg:   28px;
+      --shadow-sm:   0 2px 12px rgba(26,59,90,.08);
+      --shadow:      0 8px 32px rgba(26,59,90,.12);
+      --shadow-lg:   0 20px 60px rgba(26,59,90,.18);
+      --transition:  .35s cubic-bezier(.4,0,.2,1);
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
 
+    img { max-width: 100%; height: auto; display: block; }
+
     /* ─── UTILITY ─────────────────────────────────────────── */
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 96px 0; }
-    .section--sm { padding: 72px 0; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+    .section { padding: clamp(64px, 10vw, 110px) 0; }
 
     .reveal {
       opacity: 0;
@@ -55,10 +60,34 @@
       transition: opacity .65s var(--transition), transform .65s var(--transition);
     }
     .reveal.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: .1s; }
-    .reveal-delay-2 { transition-delay: .2s; }
-    .reveal-delay-3 { transition-delay: .3s; }
-    .reveal-delay-4 { transition-delay: .4s; }
+    .reveal-d1 { transition-delay: .1s; }
+    .reveal-d2 { transition-delay: .2s; }
+    .reveal-d3 { transition-delay: .3s; }
+    .reveal-d4 { transition-delay: .4s; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 12px; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--yellow-dark);
+      margin-bottom: 14px;
+      padding: 6px 14px;
+      background: rgba(247,192,38,.12);
+      border-radius: 50px;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(26px, 4.5vw, 46px);
+      line-height: 1.1; letter-spacing: -.02em;
+      color: var(--text);
+    }
+    .section-title span { color: var(--teal); }
+    .section-sub {
+      font-size: clamp(15px, 2.2vw, 18px);
+      color: var(--text-muted);
+      margin-top: 18px; max-width: 620px;
+      line-height: 1.6;
+    }
 
     /* ─── NAV ──────────────────────────────────────────────── */
     nav {
@@ -67,12 +96,12 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,.08);
-      padding: 14px 0;
+      padding: 12px 0;
       transition: var(--transition);
     }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
-      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      max-width: 1180px; margin: 0 auto; padding: 0 20px;
     }
     .logo {
       display: flex; align-items: center; gap: 12px;
@@ -82,23 +111,28 @@
       width: 38px; height: 38px; border-radius: 10px;
       background: var(--white);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 15px;
+      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 14px;
       line-height: 1; letter-spacing: -1px;
       flex-shrink: 0;
     }
     .logo-icon span:first-child { color: var(--teal); }
     .logo-icon span:last-child  { color: var(--yellow); }
-    .logo-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px; }
-    .logo-sub  { font-size: 11px; color: rgba(255,255,255,.5); display: block; line-height: 1.2; }
+    .logo-name { font-weight: 800; font-size: 17px; letter-spacing: -.02em; }
+    .logo-sub  { font-size: 10.5px; color: rgba(255,255,255,.5); display: block; line-height: 1.2; font-weight: 400; }
 
     .nav-cta {
       background: var(--yellow); color: var(--teal);
-      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
-      padding: 10px 22px; border-radius: 50px; text-decoration: none;
+      font-weight: 700; font-size: 13.5px;
+      padding: 10px 20px; border-radius: 50px; text-decoration: none;
       transition: var(--transition);
       white-space: nowrap;
     }
     .nav-cta:hover { background: var(--yellow-dark); transform: translateY(-1px); }
+
+    @media (max-width: 480px) {
+      .nav-cta { padding: 9px 16px; font-size: 12.5px; }
+      .logo-sub { display: none; }
+    }
 
     /* ─── HERO ─────────────────────────────────────────────── */
     .hero {
@@ -106,126 +140,29 @@
       min-height: 100vh;
       display: flex; align-items: center;
       position: relative; overflow: hidden;
-      padding: 120px 0 80px;
+      padding: clamp(100px, 16vw, 140px) 0 clamp(64px, 10vw, 100px);
     }
 
-    /* geometric background texture */
-    .hero-bg {
-      position: absolute; inset: 0; pointer-events: none;
-    }
-    .hero-bg svg { width: 100%; height: 100%; opacity: .07; }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
+    .hero-bg svg { width: 100%; height: 100%; opacity: .06; }
 
     .hero-inner {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.05fr 1fr;
       align-items: center;
-      gap: 48px;
-    }
-
-    .hero-content {
+      gap: clamp(32px, 6vw, 64px);
       position: relative; z-index: 2;
     }
 
-    /* ── Phone mockup wrapper ── */
-    .hero-mockup {
-      position: relative; z-index: 2;
-      display: flex; justify-content: center; align-items: center;
-    }
-
-    .phone-scene {
-      position: relative;
-      width: 260px;
-      animation: float 4s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-14px); }
-    }
-
-    /* iPhone frame */
-    .phone-frame {
-      position: relative;
-      width: 260px;
-      background: #1a1a1a;
-      border-radius: 40px;
-      padding: 10px;
-      box-shadow:
-        0 0 0 1px #3a3a3a,
-        0 40px 80px rgba(0,0,0,.6),
-        inset 0 1px 0 rgba(255,255,255,.15);
-    }
-    /* notch */
-    .phone-frame::before {
-      content: '';
-      position: absolute; top: 10px; left: 50%;
-      transform: translateX(-50%);
-      width: 90px; height: 24px;
-      background: #1a1a1a;
-      border-radius: 0 0 16px 16px;
-      z-index: 10;
-    }
-    /* side buttons */
-    .phone-frame::after {
-      content: '';
-      position: absolute; right: -3px; top: 80px;
-      width: 3px; height: 60px;
-      background: #2a2a2a; border-radius: 0 2px 2px 0;
-    }
-    .phone-screen {
-      border-radius: 32px;
-      overflow: hidden;
-      position: relative;
-    }
-    .phone-screen img {
-      width: 100%;
-      display: block;
-    }
-
-    /* ── Notification badges ── */
-    .notif {
-      position: absolute;
-      background: white;
-      border-radius: 14px;
-      padding: 10px 14px;
-      display: flex; align-items: center; gap: 10px;
-      box-shadow: 0 8px 32px rgba(0,0,0,.25);
-      white-space: nowrap;
-      z-index: 10;
-      animation: float 4s ease-in-out infinite;
-    }
-    .notif-icon {
-      width: 36px; height: 36px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .notif-icon svg { width: 18px; height: 18px; }
-    .notif-title { font-size: 12px; font-weight: 700; color: #1a2a3a; line-height: 1.2; display: block; }
-    .notif-sub   { font-size: 11px; color: #7a8a9a; line-height: 1.2; display: block; }
-
-    /* positions & delays */
-    .notif-1 { top: 8%;  left: -90px; animation-delay: 0s; }
-    .notif-2 { top: 38%; right: -100px; animation-delay: 1s; }
-    .notif-3 { bottom: 22%; left: -85px; animation-delay: 1.8s; }
-    .notif-4 { bottom: 5%; right: -80px; animation-delay: .5s; }
-
-    /* colors */
-    .notif-green  .notif-icon { background: #e6f9f0; color: #22c55e; }
-    .notif-blue   .notif-icon { background: #e8f0fe; color: #3b82f6; }
-    .notif-yellow .notif-icon { background: #fff8e1; color: #F7C026; }
-    .notif-teal   .notif-icon { background: #e0f0f8; color: #1a3b5a; }
-
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-mockup { display: none; }
-    }
+    .hero-content { position: relative; z-index: 3; }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(247,192,38,.15); color: var(--yellow);
       border: 1px solid rgba(247,192,38,.3);
       padding: 6px 16px; border-radius: 50px;
-      font-size: 13px; font-weight: 600; letter-spacing: .03em;
-      margin-bottom: 28px;
+      font-size: 12.5px; font-weight: 600; letter-spacing: .04em;
+      margin-bottom: 24px;
     }
     .hero-badge::before {
       content: ''; width: 6px; height: 6px; border-radius: 50%;
@@ -238,41 +175,43 @@
     }
 
     .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(42px, 7vw, 80px);
-      line-height: 1.0;
+      font-weight: 900;
+      font-size: clamp(40px, 7.5vw, 78px);
+      line-height: .98;
       color: var(--white);
-      letter-spacing: -.02em;
-      margin-bottom: 10px;
+      letter-spacing: -.035em;
     }
     .hero h1 em {
       font-style: normal;
       color: var(--yellow);
       position: relative;
+      display: inline-block;
     }
     .hero h1 em::after {
       content: '';
-      position: absolute; bottom: 2px; left: 0; right: 0; height: 4px;
-      background: var(--yellow); border-radius: 2px; opacity: .4;
+      position: absolute; bottom: 4px; left: 0; right: 0; height: 5px;
+      background: var(--yellow); border-radius: 3px; opacity: .4;
     }
 
     .hero-sub {
-      font-size: clamp(17px, 2.5vw, 21px);
-      color: rgba(255,255,255,.72);
-      margin: 24px 0 40px;
+      font-size: clamp(16px, 2.4vw, 20px);
+      color: rgba(255,255,255,.78);
+      margin: clamp(20px, 3vw, 28px) 0 clamp(28px, 4vw, 36px);
       max-width: 560px;
       font-weight: 400;
       line-height: 1.55;
     }
+    .hero-sub strong { color: var(--yellow); font-weight: 700; }
 
-    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .hero-actions {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 14px;
+    }
 
     .btn-primary {
       display: inline-flex; align-items: center; gap: 10px;
       background: var(--yellow); color: var(--teal);
-      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 17px;
-      padding: 17px 36px; border-radius: 50px; text-decoration: none;
+      font-weight: 700; font-size: clamp(15px, 2vw, 17px);
+      padding: 16px 32px; border-radius: 50px; text-decoration: none;
       box-shadow: 0 8px 28px rgba(247,192,38,.4);
       transition: var(--transition);
     }
@@ -289,61 +228,138 @@
     }
 
     .hero-stats {
-      display: flex; gap: 40px; margin-top: 64px;
-      padding-top: 40px;
+      display: flex; flex-wrap: wrap; gap: clamp(20px, 4vw, 36px);
+      margin-top: clamp(40px, 7vw, 64px);
+      padding-top: clamp(24px, 5vw, 40px);
       border-top: 1px solid rgba(255,255,255,.1);
-      flex-wrap: wrap; gap: 32px;
     }
     .hero-stat-value {
-      font-family: 'Syne', sans-serif;
-      font-size: 36px; font-weight: 800;
+      font-weight: 900;
+      font-size: clamp(26px, 4vw, 36px);
       color: var(--yellow); line-height: 1;
       display: block;
+      letter-spacing: -.02em;
     }
     .hero-stat-label {
-      font-size: 13px; color: rgba(255,255,255,.5);
-      margin-top: 4px; display: block;
+      font-size: 12.5px; color: rgba(255,255,255,.5);
+      margin-top: 6px; display: block;
+      max-width: 140px; line-height: 1.4;
     }
 
-    /* ─── PAIN SECTION ─────────────────────────────────────── */
-    .pain { background: var(--bg-warm); }
-
-    .section-label {
-      font-size: 12px; font-weight: 700; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--yellow-dark);
-      margin-bottom: 12px; display: block;
-    }
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: clamp(28px, 4vw, 46px);
-      line-height: 1.1; letter-spacing: -.02em;
-      color: var(--text);
-    }
-    .section-title span { color: var(--teal); }
-    .section-sub {
-      font-size: 18px; color: var(--text-muted);
-      margin-top: 16px; max-width: 560px;
-      line-height: 1.6;
+    /* ── Phone scene ── */
+    .hero-mockup {
+      position: relative; z-index: 2;
+      display: flex; justify-content: center; align-items: center;
     }
 
-    .pain-grid {
+    .phone-scene {
+      position: relative;
+      width: min(260px, 80vw);
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-14px); }
+    }
+
+    .phone-frame {
+      position: relative;
+      width: 100%;
+      background: #1a1a1a;
+      border-radius: 40px;
+      padding: 10px;
+      box-shadow:
+        0 0 0 1px #3a3a3a,
+        0 40px 80px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.15);
+    }
+    .phone-frame::before {
+      content: '';
+      position: absolute; top: 10px; left: 50%;
+      transform: translateX(-50%);
+      width: 90px; height: 24px;
+      background: #1a1a1a;
+      border-radius: 0 0 16px 16px;
+      z-index: 10;
+    }
+    .phone-frame::after {
+      content: '';
+      position: absolute; right: -3px; top: 80px;
+      width: 3px; height: 60px;
+      background: #2a2a2a; border-radius: 0 2px 2px 0;
+    }
+    .phone-screen {
+      border-radius: 32px;
+      overflow: hidden;
+      position: relative;
+    }
+    .phone-screen img { width: 100%; }
+
+    /* Notification badges */
+    .notif {
+      position: absolute;
+      background: white;
+      border-radius: 14px;
+      padding: 10px 14px;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.28);
+      white-space: nowrap;
+      z-index: 10;
+      animation: float 4s ease-in-out infinite;
+    }
+    .notif-icon {
+      width: 34px; height: 34px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .notif-icon svg { width: 17px; height: 17px; }
+    .notif-title {
+      font-size: 12px; font-weight: 700;
+      color: #1a2a3a; line-height: 1.2; display: block;
+    }
+    .notif-sub {
+      font-size: 10.5px; color: #7a8a9a;
+      line-height: 1.2; display: block; margin-top: 1px;
+    }
+
+    .notif-1 { top: 6%;   left: -85px; animation-delay: 0s;   }
+    .notif-2 { top: 40%;  right: -90px; animation-delay: 1s;   }
+    .notif-3 { bottom: 28%; left: -80px; animation-delay: 1.8s; }
+    .notif-4 { bottom: 6%; right: -70px; animation-delay: .5s;  }
+
+    .notif-green  .notif-icon { background: #e6f9f0; color: #22c55e; }
+    .notif-blue   .notif-icon { background: #e8f0fe; color: #3b82f6; }
+    .notif-yellow .notif-icon { background: #fff8e1; color: #d9a81e; }
+    .notif-teal   .notif-icon { background: #e0f0f8; color: #1a3b5a; }
+
+    /* Tablet/mobile: hide mockup */
+    @media (max-width: 968px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-mockup { display: none; }
+    }
+
+    /* ─── PROBLEMA (P) ─────────────────────────────────────── */
+    .problema { background: var(--bg-warm); }
+    .problema .section-label { background: var(--red-soft); color: var(--red-strong); }
+
+    .grid-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px; margin-top: 56px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin-top: clamp(40px, 6vw, 56px);
     }
 
     .pain-card {
       background: var(--white);
       border-radius: var(--radius);
-      padding: 36px 32px;
+      padding: clamp(28px, 4vw, 36px) clamp(24px, 3.5vw, 32px);
       border-left: 5px solid var(--red-icon);
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
       position: relative; overflow: hidden;
     }
     .pain-card::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      content: ''; position: absolute; inset: 0;
       background: var(--red-soft); opacity: 0;
       transition: var(--transition);
     }
@@ -360,28 +376,124 @@
     .pain-icon svg { width: 26px; height: 26px; color: var(--red-icon); }
 
     .pain-card h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 19px; font-weight: 700;
+      font-size: clamp(17px, 2.4vw, 20px);
+      font-weight: 800;
       line-height: 1.25; color: var(--text);
       margin-bottom: 10px;
+      letter-spacing: -.01em;
     }
-    .pain-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
+    .pain-card p {
+      font-size: clamp(14px, 1.8vw, 15.5px);
+      color: var(--text-muted); line-height: 1.6;
+    }
 
-    /* ─── SOLUTION ─────────────────────────────────────────── */
-    .solution { background: var(--white); }
+    /* ─── AGITAÇÃO (A) ─────────────────────────────────────── */
+    .agitacao {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
+      color: white; position: relative; overflow: hidden;
+    }
+    .agitacao::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(217,64,64,.15), transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(247,192,38,.08), transparent 50%);
+      pointer-events: none;
+    }
+    .agitacao .container { position: relative; z-index: 1; }
+    .agitacao .section-label { background: rgba(217,64,64,.2); color: #ff6b6b; }
+    .agitacao .section-title { color: white; }
+    .agitacao .section-title span { color: var(--yellow); }
+    .agitacao .section-sub { color: rgba(255,255,255,.65); }
 
-    .solution-header { margin-bottom: 60px; }
+    .big-loss {
+      display: flex; justify-content: center;
+      margin: clamp(40px, 7vw, 60px) auto;
+      max-width: 600px;
+    }
+    .big-loss-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-lg);
+      padding: clamp(28px, 5vw, 44px);
+      text-align: center;
+      width: 100%;
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
+    .big-loss-label {
+      font-size: 13px; font-weight: 700;
+      color: rgba(255,255,255,.5);
+      letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .big-loss-value {
+      font-weight: 900;
+      font-size: clamp(48px, 9vw, 80px);
+      line-height: 1;
+      letter-spacing: -.04em;
+      color: #ff6b6b;
+      margin: 8px 0;
+    }
+    .big-loss-value::before { content: '−'; margin-right: 8px; }
+    .big-loss-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,.6);
+      margin-top: 12px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: clamp(32px, 5vw, 48px);
+    }
+    .stat-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      backdrop-filter: blur(10px);
+    }
+    .stat-number {
+      font-weight: 900;
+      font-size: clamp(32px, 5vw, 44px);
+      line-height: 1;
+      color: var(--yellow);
+      letter-spacing: -.03em;
+      margin-bottom: 12px;
+    }
+    .stat-text {
+      font-size: clamp(14px, 1.8vw, 15px);
+      color: rgba(255,255,255,.7);
+      line-height: 1.5;
+    }
+
+    .agitacao-quote {
+      text-align: center;
+      margin-top: clamp(40px, 6vw, 56px);
+      font-weight: 700;
+      font-size: clamp(18px, 2.8vw, 24px);
+      color: white;
+      max-width: 700px;
+      margin-left: auto; margin-right: auto;
+      line-height: 1.4;
+    }
+    .agitacao-quote span { color: var(--yellow); }
+
+    /* ─── SOLUÇÃO (S) ──────────────────────────────────────── */
+    .solucao { background: var(--white); }
+    .solucao .section-label { background: rgba(26,59,90,.08); color: var(--teal); }
 
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: clamp(20px, 3vw, 28px);
+      margin-top: clamp(40px, 6vw, 60px);
     }
 
     .feature-card {
       background: var(--bg);
       border-radius: var(--radius);
-      padding: 36px 28px;
+      padding: clamp(28px, 3.5vw, 36px) clamp(24px, 3vw, 30px);
       border: 2px solid transparent;
       transition: var(--transition);
       position: relative; overflow: hidden;
@@ -405,103 +517,106 @@
       width: 56px; height: 56px; border-radius: 16px;
       background: var(--teal);
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
     .feature-icon svg { width: 28px; height: 28px; color: var(--yellow); }
 
     .feature-card h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 20px; font-weight: 700;
-      color: var(--text); margin-bottom: 10px;
+      font-size: clamp(17px, 2.4vw, 20px);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -.01em;
     }
-    .feature-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
+    .feature-card p {
+      font-size: clamp(14px, 1.8vw, 15px);
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
 
     .feature-pill {
       display: inline-block; margin-top: 16px;
       background: rgba(26,59,90,.08); color: var(--teal);
-      font-size: 12px; font-weight: 700; letter-spacing: .04em;
+      font-size: 11.5px; font-weight: 700; letter-spacing: .04em;
       padding: 5px 12px; border-radius: 50px;
     }
 
     /* ─── HOW IT WORKS ─────────────────────────────────────── */
-    .how { background: var(--teal); }
-
+    .how { background: var(--teal); position: relative; overflow: hidden; }
+    .how::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(247,192,38,.06), transparent 50%);
+      pointer-events: none;
+    }
+    .how .container { position: relative; z-index: 1; }
+    .how .section-label { background: rgba(247,192,38,.15); color: var(--yellow); }
     .how .section-title { color: var(--white); }
-    .how .section-label { color: rgba(247,192,38,.7); }
-    .how .section-sub { color: rgba(255,255,255,.6); }
+    .how .section-sub { color: rgba(255,255,255,.65); }
+
+    .how-header { text-align: center; max-width: 620px; margin: 0 auto; }
+    .how-header .section-sub { margin-left: auto; margin-right: auto; }
 
     .steps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 0; margin-top: 64px;
-      position: relative;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: clamp(32px, 5vw, 40px);
+      margin-top: clamp(48px, 8vw, 64px);
     }
 
-    .steps::before {
-      content: '';
-      position: absolute; top: 36px; left: 14%; right: 14%;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(247,192,38,.0), rgba(247,192,38,.4), rgba(247,192,38,.0));
-      display: none;
-    }
-    @media(min-width: 768px) { .steps::before { display: block; } }
-
-    .step {
-      text-align: center; padding: 0 24px;
-      position: relative;
-    }
+    .step { text-align: center; padding: 0 12px; }
 
     .step-number {
       width: 72px; height: 72px; border-radius: 50%;
-      background: var(--yellow);
-      color: var(--teal);
-      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 28px;
+      background: var(--yellow); color: var(--teal);
+      font-weight: 900; font-size: 28px;
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 28px;
-      box-shadow: 0 8px 24px rgba(247,192,38,.3);
-      position: relative; z-index: 1;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 24px rgba(247,192,38,.35);
+      letter-spacing: -.02em;
     }
 
     .step h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 20px; font-weight: 700;
-      color: var(--white); margin-bottom: 12px;
+      font-size: clamp(17px, 2.4vw, 20px);
+      font-weight: 800;
+      color: var(--white); margin-bottom: 10px;
+      letter-spacing: -.01em;
     }
-    .step p { font-size: 15px; color: rgba(255,255,255,.6); line-height: 1.6; }
-
-    .step-arrow {
-      display: none; position: absolute;
-      top: 22px; right: -20px; z-index: 2;
-      color: var(--yellow); opacity: .5;
-    }
-    @media(min-width: 768px) {
-      .step:not(:last-child) .step-arrow { display: block; }
+    .step p {
+      font-size: clamp(14px, 1.8vw, 15px);
+      color: rgba(255,255,255,.65);
+      line-height: 1.6;
     }
 
     /* ─── TESTIMONIALS ─────────────────────────────────────── */
     .testimonials { background: var(--bg); }
+    .testimonials .section-label { background: rgba(26,59,90,.08); color: var(--teal); }
+    .testimonials .reveal { text-align: center; max-width: 620px; margin: 0 auto; }
+    .testimonials .section-sub { margin-left: auto; margin-right: auto; }
 
     .testimonials-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px; margin-top: 56px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+      margin-top: clamp(40px, 6vw, 56px);
     }
 
     .testimonial-card {
       background: var(--white);
       border-radius: var(--radius);
-      padding: 36px 32px;
+      padding: clamp(28px, 3.5vw, 36px) clamp(24px, 3vw, 32px);
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
-      display: flex; flex-direction: column; gap: 20px;
+      display: flex; flex-direction: column; gap: 18px;
+      text-align: left;
     }
     .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 
-    .stars { display: flex; gap: 4px; }
+    .stars { display: flex; gap: 3px; }
     .stars svg { width: 18px; height: 18px; color: var(--yellow); }
 
     .testimonial-text {
-      font-size: 16px; line-height: 1.7;
+      font-size: clamp(15px, 1.9vw, 16px);
+      line-height: 1.7;
       color: var(--text);
       font-style: italic;
       flex: 1;
@@ -514,29 +629,34 @@
       width: 48px; height: 48px; border-radius: 50%;
       background: var(--teal);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px;
+      font-weight: 800; font-size: 15px;
       color: var(--yellow); flex-shrink: 0;
+      letter-spacing: -.02em;
     }
     .author-name {
-      font-weight: 700; font-size: 15px; color: var(--text); display: block;
+      font-weight: 700; font-size: 15px;
+      color: var(--text); display: block;
     }
     .author-role {
-      font-size: 13px; color: var(--text-muted); display: block; margin-top: 2px;
+      font-size: 12.5px; color: var(--text-muted);
+      display: block; margin-top: 2px;
     }
 
-    /* ─── PRICING ──────────────────────────────────────────── */
+    /* ─── PRICING / CTA FINAL ─────────────────────────────── */
     .pricing { background: var(--white); }
+    .pricing > .container > .reveal { text-align: center; }
+    .pricing .section-label { background: rgba(247,192,38,.15); color: var(--yellow-dark); }
+    .pricing .section-sub { margin-left: auto; margin-right: auto; }
 
     .pricing-card {
-      max-width: 600px; margin: 60px auto 0;
+      max-width: 640px; margin: clamp(40px, 6vw, 60px) auto 0;
       background: var(--teal);
       border-radius: var(--radius-lg);
-      padding: 60px 48px;
+      padding: clamp(40px, 6vw, 64px) clamp(28px, 4vw, 52px);
       text-align: center;
       position: relative; overflow: hidden;
       box-shadow: var(--shadow-lg);
     }
-
     .pricing-card::before {
       content: '';
       position: absolute; top: -60px; right: -60px;
@@ -554,49 +674,58 @@
       display: inline-block;
       background: rgba(247,192,38,.15); color: var(--yellow);
       border: 1px solid rgba(247,192,38,.3);
-      font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
       padding: 6px 16px; border-radius: 50px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
+      position: relative; z-index: 1;
     }
 
     .pricing-card h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(28px, 4vw, 42px); font-weight: 800;
-      color: var(--white); line-height: 1.1;
-      margin-bottom: 16px;
+      font-weight: 900;
+      font-size: clamp(26px, 4.2vw, 40px);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 14px;
+      letter-spacing: -.03em;
+      position: relative; z-index: 1;
     }
     .pricing-card h2 em {
       font-style: normal; color: var(--yellow);
     }
-
     .pricing-card p {
-      font-size: 17px; color: rgba(255,255,255,.65);
-      margin-bottom: 36px; line-height: 1.6;
+      font-size: clamp(15px, 2vw, 17px);
+      color: rgba(255,255,255,.7);
+      margin-bottom: 32px; line-height: 1.6;
+      position: relative; z-index: 1;
     }
 
     .pricing-features {
       list-style: none;
-      display: flex; flex-direction: column; gap: 14px;
-      margin-bottom: 40px; text-align: left;
+      display: flex; flex-direction: column; gap: 13px;
+      margin-bottom: 36px; text-align: left;
       position: relative; z-index: 1;
     }
     .pricing-features li {
       display: flex; align-items: center; gap: 12px;
-      font-size: 16px; color: rgba(255,255,255,.85);
+      font-size: clamp(14px, 1.9vw, 15.5px);
+      color: rgba(255,255,255,.85);
+      font-weight: 500;
     }
     .pricing-features li svg {
-      width: 20px; height: 20px; color: var(--yellow); flex-shrink: 0;
+      width: 20px; height: 20px;
+      color: var(--yellow); flex-shrink: 0;
     }
 
     .btn-cta-big {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       background: var(--yellow); color: var(--teal);
-      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px;
-      padding: 20px 48px; border-radius: 50px; text-decoration: none;
+      font-weight: 700;
+      font-size: clamp(15px, 2vw, 17.5px);
+      padding: clamp(16px, 2.5vw, 20px) clamp(28px, 4vw, 44px);
+      border-radius: 50px; text-decoration: none;
       box-shadow: 0 8px 28px rgba(247,192,38,.45);
       transition: var(--transition);
       position: relative; z-index: 1; width: 100%;
-      justify-content: center;
     }
     .btn-cta-big:hover {
       background: var(--yellow-dark);
@@ -605,54 +734,51 @@
     }
 
     .pricing-note {
-      font-size: 13px; color: rgba(255,255,255,.4);
+      font-size: 12.5px; color: rgba(255,255,255,.4);
       margin-top: 16px; position: relative; z-index: 1;
     }
 
     /* ─── FOOTER ───────────────────────────────────────────── */
     footer {
       background: var(--teal-dark);
-      padding: 48px 0 32px;
+      padding: clamp(40px, 5vw, 56px) 0 clamp(24px, 3vw, 32px);
     }
-
     .footer-inner {
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 24px;
-      padding-bottom: 32px;
+      padding-bottom: 28px;
       border-bottom: 1px solid rgba(255,255,255,.08);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
-
-    .footer-brand .logo-sub { color: rgba(255,255,255,.35); }
-
+    .footer-brand .logo-sub { color: rgba(255,255,255,.35); display: block; }
     .footer-tagline {
-      font-size: 14px; color: rgba(255,255,255,.4);
+      font-size: 13.5px; color: rgba(255,255,255,.4);
       margin-top: 8px;
     }
-
     .footer-cta-small {
       background: var(--yellow); color: var(--teal);
-      font-weight: 700; font-size: 15px;
-      padding: 14px 32px; border-radius: 50px; text-decoration: none;
+      font-weight: 700; font-size: 14.5px;
+      padding: 13px 28px; border-radius: 50px; text-decoration: none;
       transition: var(--transition);
+      white-space: nowrap;
     }
     .footer-cta-small:hover { background: var(--yellow-dark); }
-
     .footer-copy {
-      font-size: 13px; color: rgba(255,255,255,.25); text-align: center;
+      font-size: 12.5px; color: rgba(255,255,255,.25);
+      text-align: center;
     }
 
     /* ─── FLOATING CTA ─────────────────────────────────────── */
     .floating-cta {
-      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      position: fixed; bottom: 20px; right: 20px; z-index: 200;
       display: none;
     }
     .floating-cta.show { display: flex; }
     .floating-cta a {
-      display: flex; align-items: center; gap: 10px;
+      display: flex; align-items: center; gap: 8px;
       background: var(--yellow); color: var(--teal);
-      font-weight: 700; font-size: 15px;
-      padding: 14px 24px; border-radius: 50px; text-decoration: none;
+      font-weight: 700; font-size: 14.5px;
+      padding: 13px 22px; border-radius: 50px; text-decoration: none;
       box-shadow: 0 8px 28px rgba(247,192,38,.4);
       transition: var(--transition);
     }
@@ -663,14 +789,17 @@
     }
     .floating-cta svg { width: 18px; height: 18px; }
 
-    /* ─── RESPONSIVE ───────────────────────────────────────── */
-    @media (max-width: 768px) {
-      .section { padding: 72px 0; }
-      .hero { min-height: auto; padding: 100px 0 64px; }
-      .hero-stats { gap: 24px; }
-      .hero-splash { display: none; }
-      .pricing-card { padding: 40px 28px; }
+    @media (max-width: 480px) {
+      .floating-cta { bottom: 14px; right: 14px; }
+      .floating-cta a { padding: 11px 18px; font-size: 13.5px; }
+    }
+
+    /* ─── EXTRA RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 600px) {
+      .hero-stats { gap: 20px; }
+      .hero-stat-label { max-width: none; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-cta-small { width: 100%; text-align: center; }
     }
   </style>
 </head>
@@ -705,212 +834,239 @@
     </svg>
   </div>
 
-  <!-- Paint roller decoration -->
-  <div class="hero-splash" aria-hidden="true">
-    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="250" cy="250" r="240" fill="white" opacity=".5"/>
-      <circle cx="250" cy="250" r="180" fill="white" opacity=".4"/>
-      <circle cx="250" cy="250" r="120" fill="white" opacity=".3"/>
-      <path d="M150 100 Q250 50 350 100 Q420 200 350 280 Q280 360 180 320 Q80 280 80 200 Q80 130 150 100Z" fill="white" opacity=".6"/>
-    </svg>
-  </div>
-
   <div class="container">
     <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-badge">Para Pintores e Reformistas</div>
 
-      <h1>
-        Chega de<br />
-        <em>Chutar</em><br />
-        Preço!
-      </h1>
+      <div class="hero-content">
+        <div class="hero-badge">Para Pintores e Reformistas</div>
 
-      <p class="hero-sub">
-        Monte orçamentos profissionais em minutos com a tabela de preços certa.
-        Mais de 150 serviços com faixa de preço de mercado — nunca mais cobrar barato demais.
-      </p>
+        <h1>Chega de<br /><em>Chutar</em> Preço!</h1>
 
-      <div class="hero-actions">
-        <a href="https://orcamentopro.ori.lat/login" class="btn-primary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          Começar Grátis
-        </a>
-        <span class="hero-note">Sem cartão de crédito · Acesse agora</span>
-      </div>
+        <p class="hero-sub">
+          Você está deixando <strong>milhares de reais na mesa</strong> todo mês.
+          Descubra o preço certo para cada serviço de pintura e reforma — e pare de trabalhar de graça.
+        </p>
 
-      <div class="hero-stats">
-        <div>
-          <span class="hero-stat-value">150+</span>
-          <span class="hero-stat-label">serviços com preço de mercado</span>
+        <div class="hero-actions">
+          <a href="https://orcamentopro.ori.lat/login" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Começar Grátis Agora
+          </a>
+          <span class="hero-note">Sem cartão · Acesso imediato</span>
         </div>
-        <div>
-          <span class="hero-stat-value">3 min</span>
-          <span class="hero-stat-label">para montar um orçamento completo</span>
-        </div>
-        <div>
-          <span class="hero-stat-value">R$ 0</span>
-          <span class="hero-stat-label">para começar a usar</span>
+
+        <div class="hero-stats">
+          <div>
+            <span class="hero-stat-value">+150</span>
+            <span class="hero-stat-label">serviços com preço de mercado</span>
+          </div>
+          <div>
+            <span class="hero-stat-value">3 min</span>
+            <span class="hero-stat-label">para montar um orçamento</span>
+          </div>
+          <div>
+            <span class="hero-stat-value">R$ 0</span>
+            <span class="hero-stat-label">para começar a usar</span>
+          </div>
         </div>
       </div>
+
+      <div class="hero-mockup">
+        <div class="phone-scene">
+
+          <div class="notif notif-1 notif-green">
+            <div class="notif-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <span class="notif-title">Orçamento Fechado!</span>
+              <span class="notif-sub">R$ 7.944,50 · Olavo Bilac</span>
+            </div>
+          </div>
+
+          <div class="notif notif-2 notif-blue">
+            <div class="notif-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </div>
+            <div>
+              <span class="notif-title">Orçamento Enviado</span>
+              <span class="notif-sub">Aline Camargos · agora</span>
+            </div>
+          </div>
+
+          <div class="notif notif-3 notif-teal">
+            <div class="notif-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <span class="notif-title">Novo Cliente</span>
+              <span class="notif-sub">Claudio Manoel cadastrado</span>
+            </div>
+          </div>
+
+          <div class="notif notif-4 notif-yellow">
+            <div class="notif-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div>
+              <span class="notif-title">R$ 30.641,59</span>
+              <span class="notif-sub">Total faturado este mês</span>
+            </div>
+          </div>
+
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <img src="mockup/3.jpeg" alt="PS Pro dashboard no celular" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
-
-    <div class="hero-mockup">
-      <div class="phone-scene">
-
-        <!-- Notificação 1: Orçamento fechado -->
-        <div class="notif notif-1 notif-green">
-          <div class="notif-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <div>
-            <span class="notif-title">Orçamento Fechado!</span>
-            <span class="notif-sub">R$ 7.944,50 · Olavo Bilac</span>
-          </div>
-        </div>
-
-        <!-- Notificação 2: Orçamento enviado -->
-        <div class="notif notif-2 notif-blue">
-          <div class="notif-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          </div>
-          <div>
-            <span class="notif-title">Orçamento Enviado</span>
-            <span class="notif-sub">Aline Camargos · agora</span>
-          </div>
-        </div>
-
-        <!-- Notificação 3: Novo cliente -->
-        <div class="notif notif-3 notif-teal">
-          <div class="notif-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-          <div>
-            <span class="notif-title">Novo Cliente</span>
-            <span class="notif-sub">Claudio Manoel cadastrado</span>
-          </div>
-        </div>
-
-        <!-- Notificação 4: Total faturado -->
-        <div class="notif notif-4 notif-yellow">
-          <div class="notif-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <div>
-            <span class="notif-title">R$ 30.641,59</span>
-            <span class="notif-sub">Total faturado este mês</span>
-          </div>
-        </div>
-
-        <!-- Frame do celular -->
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <img src="mockup/3.jpeg" alt="PS Pro dashboard" />
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    </div><!-- /hero-inner -->
   </div>
 </section>
 
-<!-- ─── PAIN ──────────────────────────────────────────────── -->
-<section class="section pain" id="problema">
+<!-- ─── P • PROBLEMA ──────────────────────────────────────── -->
+<section class="section problema" id="problema">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">Você se identifica com isso?</span>
-      <h2 class="section-title">A dor de todo <span>profissional de pintura</span></h2>
-      <p class="section-sub">Se você é pintor, reformista ou prestador de serviços, sabe bem o que é isso.</p>
+      <span class="section-label">O problema</span>
+      <h2 class="section-title">A verdade que <span>ninguém te conta</span></h2>
+      <p class="section-sub">
+        Todo pintor autônomo passa pela mesma situação — e quase ninguém percebe a tempo.
+      </p>
     </div>
 
-    <div class="pain-grid">
-      <div class="pain-card reveal reveal-delay-1">
+    <div class="grid-cards">
+      <div class="pain-card reveal reveal-d1">
         <div class="pain-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
           </svg>
         </div>
-        <h3>Cobra barato demais e sai no prejuízo</h3>
-        <p>Você "chuta" um preço, o cliente aceita na hora — e só depois você descobre que trabalhou de graça ou até perdeu dinheiro.</p>
+        <h3>Você não tem referência de preço</h3>
+        <p>Cada orçamento vira um chute. Você olha pro serviço, pensa um valor — e torce pra estar certo. No fim do mês, percebe que cobrou de menos.</p>
       </div>
 
-      <div class="pain-card reveal reveal-delay-2">
+      <div class="pain-card reveal reveal-d2">
         <div class="pain-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
           </svg>
         </div>
-        <h3>Perde horas montando um orçamento</h3>
-        <p>Cada orçamento é uma tarde inteira de cálculo, pesquisa de preço e formatação — tempo que poderia estar sendo usado na obra.</p>
+        <h3>Perde uma tarde inteira por orçamento</h3>
+        <p>Calculadora, papel, pesquisa no Google... e ainda tem que voltar pra obra. Tempo que poderia estar virando dinheiro, virou contas mal feitas.</p>
       </div>
 
-      <div class="pain-card reveal reveal-delay-3">
+      <div class="pain-card reveal reveal-d3">
         <div class="pain-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/>
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
           </svg>
         </div>
-        <h3>Passa proposta no papel ou no WhatsApp</h3>
-        <p>Sem profissionalismo, sem credibilidade. O cliente compara seu orçamento escrito à mão com o do concorrente — e não te contrata.</p>
+        <h3>Manda proposta amadora no WhatsApp</h3>
+        <p>"Mão de obra: R$ X. Material: R$ Y. Total: R$ Z." Sem detalhe, sem profissionalismo. O cliente compara com a proposta da empresa profissional — e te descarta.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── SOLUTION ──────────────────────────────────────────── -->
-<section class="section solution" id="solucao">
+<!-- ─── A • AGITAÇÃO ──────────────────────────────────────── -->
+<section class="section agitacao" id="agitacao">
   <div class="container">
-    <div class="solution-header reveal">
+    <div class="reveal" style="text-align:center; max-width: 720px; margin: 0 auto;">
+      <span class="section-label">A conta que ninguém faz</span>
+      <h2 class="section-title">Quanto você perde por mês <span>chutando preço?</span></h2>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;">
+        Faça as contas. Os números são assustadores — e você nem percebia.
+      </p>
+    </div>
+
+    <div class="big-loss reveal reveal-d1">
+      <div class="big-loss-card">
+        <div class="big-loss-label">Perda média mensal de um pintor que chuta preço</div>
+        <div class="big-loss-value">R$ 8.400</div>
+        <div class="big-loss-sub">Mais de <strong style="color:#ff6b6b">R$ 100.000 por ano</strong> indo embora — sem você nem perceber.</div>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card reveal reveal-d1">
+        <div class="stat-number">70%</div>
+        <p class="stat-text">dos pintores autônomos cobram <strong>até 40% abaixo</strong> do preço de mercado.</p>
+      </div>
+      <div class="stat-card reveal reveal-d2">
+        <div class="stat-number">R$ 200–800</div>
+        <p class="stat-text">é o que você deixa de ganhar <strong>em CADA orçamento</strong> mal calculado.</p>
+      </div>
+      <div class="stat-card reveal reveal-d3">
+        <div class="stat-number">3 em 10</div>
+        <p class="stat-text">clientes contratam outro profissional só pela <strong>aparência amadora</strong> da proposta.</p>
+      </div>
+    </div>
+
+    <p class="agitacao-quote reveal reveal-d2">
+      Você não merece trabalhar de graça.<br />
+      <span>Você merece cobrar o preço justo.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ─── S • SOLUÇÃO ───────────────────────────────────────── -->
+<section class="section solucao" id="solucao">
+  <div class="container">
+    <div class="reveal">
       <span class="section-label">A solução</span>
-      <h2 class="section-title">Conheça o <span>PS Pro</span></h2>
-      <p class="section-sub">Tudo que você precisa para orçar com confiança, ganhar mais e parecer profissional.</p>
+      <h2 class="section-title">Apresentando o <span>PS Pro</span></h2>
+      <p class="section-sub">
+        O sistema que te diz <strong>exatamente quanto cobrar</strong> em cada serviço — e ainda monta o orçamento profissional pra você em minutos.
+      </p>
     </div>
 
     <div class="features-grid">
-      <div class="feature-card reveal reveal-delay-1">
+      <div class="feature-card reveal reveal-d1">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
           </svg>
         </div>
-        <h3>Tabela de Preços Completa</h3>
-        <p>Mais de 150 serviços de pintura e reforma com preço de referência e faixa mínima–máxima do mercado.</p>
-        <span class="feature-pill">150+ serviços</span>
+        <h3>Tabela com 150+ Serviços</h3>
+        <p>Cada serviço com preço de referência e faixa mínima–máxima do mercado. Você nunca mais cobra abaixo do que vale.</p>
+        <span class="feature-pill">Resolve a falta de referência</span>
       </div>
 
-      <div class="feature-card reveal reveal-delay-2">
+      <div class="feature-card reveal reveal-d2">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
           </svg>
         </div>
-        <h3>Orçamento em Minutos</h3>
-        <p>Selecione o cliente, adicione os serviços e as quantidades. O total é calculado automaticamente.</p>
-        <span class="feature-pill">Super rápido</span>
+        <h3>Orçamento em 3 Minutos</h3>
+        <p>Escolha o cliente, adicione os serviços e a quantidade. O total é calculado automaticamente. Acabou a tarde perdida.</p>
+        <span class="feature-pill">Resolve a perda de tempo</span>
       </div>
 
-      <div class="feature-card reveal reveal-delay-3">
+      <div class="feature-card reveal reveal-d3">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+          </svg>
+        </div>
+        <h3>Proposta Profissional</h3>
+        <p>Envie um orçamento que parece de empresa grande — completo, organizado e com sua marca. O cliente fecha na hora.</p>
+        <span class="feature-pill">Resolve a falta de credibilidade</span>
+      </div>
+
+      <div class="feature-card reveal reveal-d4">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
           </svg>
         </div>
         <h3>Controle Total do Negócio</h3>
-        <p>Acompanhe orçamentos pendentes, fechados e recusados. Veja exatamente quanto você faturou.</p>
-        <span class="feature-pill">Dashboard completo</span>
-      </div>
-
-      <div class="feature-card reveal reveal-delay-4">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
-          </svg>
-        </div>
-        <h3>Funciona no Celular</h3>
-        <p>Instale como um aplicativo no seu celular. Use na obra, na rua, em qualquer lugar — sem depender de computador.</p>
-        <span class="feature-pill">App no celular</span>
+        <p>Acompanhe orçamentos pendentes, fechados e recusados. Veja exatamente quanto você está faturando.</p>
+        <span class="feature-pill">Você no comando</span>
       </div>
     </div>
   </div>
@@ -919,29 +1075,26 @@
 <!-- ─── HOW IT WORKS ──────────────────────────────────────── -->
 <section class="section how" id="como-funciona">
   <div class="container">
-    <div class="reveal" style="text-align:center; max-width: 560px; margin: 0 auto;">
+    <div class="how-header reveal">
       <span class="section-label">Como funciona</span>
       <h2 class="section-title">3 passos para nunca mais chutar preço</h2>
+      <p class="section-sub">Em menos de 5 minutos você já está faturando como profissional de verdade.</p>
     </div>
 
     <div class="steps">
-      <div class="step reveal reveal-delay-1">
+      <div class="step reveal reveal-d1">
         <div class="step-number">1</div>
-        <svg class="step-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        <h3>Cadastre seus clientes</h3>
-        <p>Adicione o nome e os dados do cliente. Em segundos, está pronto para receber orçamentos.</p>
+        <h3>Cadastre seu cliente</h3>
+        <p>Adicione nome, telefone e endereço da obra. Pronto em segundos.</p>
       </div>
-
-      <div class="step reveal reveal-delay-2">
+      <div class="step reveal reveal-d2">
         <div class="step-number">2</div>
-        <svg class="step-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <h3>Monte o orçamento</h3>
-        <p>Escolha os serviços da tabela, informe a quantidade. O preço de mercado é preenchido automaticamente.</p>
+        <p>Escolha os serviços da tabela, informe a quantidade. O preço de mercado é preenchido na hora.</p>
       </div>
-
-      <div class="step reveal reveal-delay-3">
+      <div class="step reveal reveal-d3">
         <div class="step-number">3</div>
-        <h3>Envie e acompanhe</h3>
+        <h3>Envie e feche</h3>
         <p>Compartilhe o orçamento profissional com o cliente e acompanhe o status em tempo real.</p>
       </div>
     </div>
@@ -951,13 +1104,14 @@
 <!-- ─── TESTIMONIALS ──────────────────────────────────────── -->
 <section class="section testimonials" id="depoimentos">
   <div class="container">
-    <div class="reveal" style="text-align:center; max-width:560px; margin: 0 auto;">
-      <span class="section-label">Quem já usa</span>
+    <div class="reveal">
+      <span class="section-label">Prova social</span>
       <h2 class="section-title">Pintores que <span>pararam de perder dinheiro</span></h2>
+      <p class="section-sub">Veja o que mudou na vida de quem largou o chute.</p>
     </div>
 
     <div class="testimonials-grid">
-      <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-card reveal reveal-d1">
         <div class="stars">
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -965,7 +1119,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="testimonial-text">Antes eu ficava olhando para a parede sem saber quanto cobrar. Hoje abro o app, escolho o serviço e já sei o preço certo. Nunca mais saí de uma obra no prejuízo.</p>
+        <p class="testimonial-text">Antes eu olhava pra parede e chutava um valor. Hoje abro o app, escolho o serviço e já sei o preço certo. Em 2 meses meu faturamento dobrou.</p>
         <div class="testimonial-author">
           <div class="author-avatar">RS</div>
           <div>
@@ -975,7 +1129,7 @@
         </div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-card reveal reveal-d2">
         <div class="stars">
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -983,7 +1137,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="testimonial-text">O que me convenceu foi a tabela com os preços mínimo e máximo. Agora sei exatamente se estou cobrando dentro do mercado. Meu faturamento aumentou mais de 30% no primeiro mês.</p>
+        <p class="testimonial-text">A faixa mínima–máxima foi o que me convenceu. Agora sei se estou cobrando dentro do mercado. Meu faturamento subiu 38% no primeiro mês.</p>
         <div class="testimonial-author">
           <div class="author-avatar">MC</div>
           <div>
@@ -993,7 +1147,7 @@
         </div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-3">
+      <div class="testimonial-card reveal reveal-d3">
         <div class="stars">
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1001,7 +1155,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="testimonial-text">Mandava orçamento no papel e os clientes não levavam a sério. Agora envio pelo app, parece coisa de empresa grande. Fechei 3 obras na primeira semana usando o PS Pro.</p>
+        <p class="testimonial-text">Eu mandava orçamento no papel, ninguém levava a sério. Agora envio pelo app e parece de empresa grande. Fechei 3 obras só na primeira semana.</p>
         <div class="testimonial-author">
           <div class="author-avatar">AF</div>
           <div>
@@ -1014,31 +1168,32 @@
   </div>
 </section>
 
-<!-- ─── PRICING ───────────────────────────────────────────── -->
+<!-- ─── PRICING / CTA FINAL ───────────────────────────────── -->
 <section class="section pricing" id="planos">
   <div class="container">
-    <div class="reveal" style="text-align:center;">
-      <span class="section-label">Preços</span>
-      <h2 class="section-title">Simples como deve ser</h2>
+    <div class="reveal">
+      <span class="section-label">Comece agora</span>
+      <h2 class="section-title">Pare de chutar. <span>Comece a lucrar.</span></h2>
+      <p class="section-sub">Sem complicação, sem cartão de crédito, sem promessa furada.</p>
     </div>
 
     <div class="pricing-card reveal">
-      <div class="pricing-tag">Comece hoje mesmo</div>
-      <h2>Comece <em>grátis</em> agora</h2>
-      <p>Crie sua conta, monte seu primeiro orçamento e veja na prática como é fácil cobrar o preço certo.</p>
+      <div class="pricing-tag">100% Grátis para começar</div>
+      <h2>Crie sua conta <em>agora</em></h2>
+      <p>Em 3 minutos você está fazendo seu primeiro orçamento com preço de mercado.</p>
 
       <ul class="pricing-features">
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Acesso à tabela com 150+ serviços de pintura e reforma
+          Tabela completa com 150+ serviços de pintura e reforma
         </li>
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Criação ilimitada de clientes e orçamentos
+          Clientes e orçamentos ilimitados
         </li>
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Dashboard com controle de orçamentos e faturamento
+          Dashboard de controle e faturamento
         </li>
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1077,7 +1232,7 @@
       </div>
       <a href="https://orcamentopro.ori.lat/login" class="footer-cta-small">Começar Grátis →</a>
     </div>
-    <p class="footer-copy">© 2025 PS Pro — Orçamentos Inteligentes. Feito para pintores e reformistas brasileiros.</p>
+    <p class="footer-copy">© 2026 PS Pro — Orçamentos Inteligentes. Feito para pintores e reformistas brasileiros.</p>
   </div>
 </footer>
 
@@ -1090,8 +1245,7 @@
 </div>
 
 <script>
-  // ── Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
+  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -1100,24 +1254,22 @@
       }
     });
   }, { threshold: 0.12 });
-  reveals.forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // ── Floating CTA visibility
+  // Floating CTA
   const floatingCta = document.getElementById('floatingCta');
   const heroCta = document.querySelector('.hero-actions');
-  const heroObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      floatingCta.classList.toggle('show', !e.isIntersecting);
-    });
-  }, { threshold: 0.5 });
-  if (heroCta) heroObserver.observe(heroCta);
+  if (heroCta) {
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => floatingCta.classList.toggle('show', !e.isIntersecting));
+    }, { threshold: 0.5 });
+    heroObserver.observe(heroCta);
+  }
 
-  // ── Nav shadow on scroll
+  // Nav shadow on scroll
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
-    nav.style.boxShadow = window.scrollY > 40
-      ? '0 4px 24px rgba(0,0,0,.25)'
-      : 'none';
+    nav.style.boxShadow = window.scrollY > 40 ? '0 4px 24px rgba(0,0,0,.25)' : 'none';
   }, { passive: true });
 </script>
 </body>
