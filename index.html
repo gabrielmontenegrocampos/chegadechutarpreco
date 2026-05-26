@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Chega de Chutar Preço — Pare de perder dinheiro nos seus orçamentos</title>
-  <meta name="description" content="Você está deixando milhares de reais na mesa todo mês. PS Pro é o sistema que mostra o preço certo de cada serviço de pintura e reforma. Comece grátis." />
+  <title>Chega de Chutar Preço — O método que ensina pintores a calcular o preço certo</title>
+  <meta name="description" content="Curso + app + 5 bônus que ensinam pintores a calcular o preço certo em menos de 2 horas. De R$ 397 por R$ 47. Garantia de 7 dias." />
   <meta name="theme-color" content="#1a3b5a" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,6 +28,8 @@
       --red-soft:    #ffeaea;
       --red-icon:    #d94040;
       --red-strong:  #b91c1c;
+      --green:       #16a34a;
+      --green-soft:  #dcfce7;
       --radius:      18px;
       --radius-lg:   28px;
       --shadow-sm:   0 2px 12px rgba(26,59,90,.08);
@@ -64,6 +66,7 @@
     .reveal-d2 { transition-delay: .2s; }
     .reveal-d3 { transition-delay: .3s; }
     .reveal-d4 { transition-delay: .4s; }
+    .reveal-d5 { transition-delay: .5s; }
 
     .section-label {
       display: inline-block;
@@ -75,7 +78,6 @@
       border-radius: 50px;
     }
     .section-title {
-      font-family: 'Montserrat', sans-serif;
       font-weight: 900;
       font-size: clamp(26px, 4.5vw, 46px);
       line-height: 1.1; letter-spacing: -.02em;
@@ -85,9 +87,10 @@
     .section-sub {
       font-size: clamp(15px, 2.2vw, 18px);
       color: var(--text-muted);
-      margin-top: 18px; max-width: 620px;
+      margin-top: 18px; max-width: 660px;
       line-height: 1.6;
     }
+    .section-sub strong { color: var(--text); font-weight: 700; }
 
     /* ─── NAV ──────────────────────────────────────────────── */
     nav {
@@ -108,17 +111,15 @@
       text-decoration: none; color: var(--white);
     }
     .logo-icon {
-      width: 38px; height: 38px; border-radius: 10px;
-      background: var(--white);
+      width: 42px; height: 42px; border-radius: 10px;
+      background: var(--yellow);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 14px;
-      line-height: 1; letter-spacing: -1px;
       flex-shrink: 0;
     }
-    .logo-icon span:first-child { color: var(--teal); }
-    .logo-icon span:last-child  { color: var(--yellow); }
-    .logo-name { font-weight: 800; font-size: 17px; letter-spacing: -.02em; }
-    .logo-sub  { font-size: 10.5px; color: rgba(255,255,255,.5); display: block; line-height: 1.2; font-weight: 400; }
+    .logo-icon svg { width: 24px; height: 24px; color: var(--teal); }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-name { font-weight: 800; font-size: 15px; letter-spacing: -.01em; }
+    .logo-sub  { font-size: 10.5px; color: rgba(255,255,255,.55); display: block; margin-top: 2px; font-weight: 500; }
 
     .nav-cta {
       background: var(--yellow); color: var(--teal);
@@ -194,10 +195,10 @@
     }
 
     .hero-sub {
-      font-size: clamp(16px, 2.4vw, 20px);
+      font-size: clamp(16px, 2.4vw, 19px);
       color: rgba(255,255,255,.78);
       margin: clamp(20px, 3vw, 28px) 0 clamp(28px, 4vw, 36px);
-      max-width: 560px;
+      max-width: 580px;
       font-weight: 400;
       line-height: 1.55;
     }
@@ -222,9 +223,18 @@
     }
     .btn-primary svg { width: 20px; height: 20px; flex-shrink: 0; }
 
-    .hero-note {
+    .hero-price {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .hero-price-from {
       color: rgba(255,255,255,.45);
       font-size: 13px;
+      text-decoration: line-through;
+    }
+    .hero-price-now {
+      color: var(--yellow);
+      font-weight: 700;
+      font-size: 14px;
     }
 
     .hero-stats {
@@ -246,12 +256,11 @@
       max-width: 140px; line-height: 1.4;
     }
 
-    /* ── Phone scene ── */
+    /* Phone scene */
     .hero-mockup {
       position: relative; z-index: 2;
       display: flex; justify-content: center; align-items: center;
     }
-
     .phone-scene {
       position: relative;
       width: min(260px, 80vw);
@@ -261,66 +270,37 @@
       0%, 100% { transform: translateY(0px); }
       50%       { transform: translateY(-14px); }
     }
-
     .phone-frame {
-      position: relative;
-      width: 100%;
-      background: #1a1a1a;
-      border-radius: 40px;
-      padding: 10px;
-      box-shadow:
-        0 0 0 1px #3a3a3a,
-        0 40px 80px rgba(0,0,0,.55),
-        inset 0 1px 0 rgba(255,255,255,.15);
+      position: relative; width: 100%;
+      background: #1a1a1a; border-radius: 40px; padding: 10px;
+      box-shadow: 0 0 0 1px #3a3a3a, 0 40px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.15);
     }
     .phone-frame::before {
-      content: '';
-      position: absolute; top: 10px; left: 50%;
-      transform: translateX(-50%);
-      width: 90px; height: 24px;
-      background: #1a1a1a;
-      border-radius: 0 0 16px 16px;
-      z-index: 10;
+      content: ''; position: absolute; top: 10px; left: 50%;
+      transform: translateX(-50%); width: 90px; height: 24px;
+      background: #1a1a1a; border-radius: 0 0 16px 16px; z-index: 10;
     }
     .phone-frame::after {
-      content: '';
-      position: absolute; right: -3px; top: 80px;
-      width: 3px; height: 60px;
-      background: #2a2a2a; border-radius: 0 2px 2px 0;
+      content: ''; position: absolute; right: -3px; top: 80px;
+      width: 3px; height: 60px; background: #2a2a2a; border-radius: 0 2px 2px 0;
     }
-    .phone-screen {
-      border-radius: 32px;
-      overflow: hidden;
-      position: relative;
-    }
+    .phone-screen { border-radius: 32px; overflow: hidden; position: relative; }
     .phone-screen img { width: 100%; }
 
-    /* Notification badges */
     .notif {
-      position: absolute;
-      background: white;
-      border-radius: 14px;
-      padding: 10px 14px;
-      display: flex; align-items: center; gap: 10px;
+      position: absolute; background: white; border-radius: 14px;
+      padding: 10px 14px; display: flex; align-items: center; gap: 10px;
       box-shadow: 0 8px 32px rgba(0,0,0,.28);
-      white-space: nowrap;
-      z-index: 10;
+      white-space: nowrap; z-index: 10;
       animation: float 4s ease-in-out infinite;
     }
     .notif-icon {
       width: 34px; height: 34px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .notif-icon svg { width: 17px; height: 17px; }
-    .notif-title {
-      font-size: 12px; font-weight: 700;
-      color: #1a2a3a; line-height: 1.2; display: block;
-    }
-    .notif-sub {
-      font-size: 10.5px; color: #7a8a9a;
-      line-height: 1.2; display: block; margin-top: 1px;
-    }
+    .notif-title { font-size: 12px; font-weight: 700; color: #1a2a3a; line-height: 1.2; display: block; }
+    .notif-sub   { font-size: 10.5px; color: #7a8a9a; line-height: 1.2; display: block; margin-top: 1px; }
 
     .notif-1 { top: 6%;   left: -85px; animation-delay: 0s;   }
     .notif-2 { top: 40%;  right: -90px; animation-delay: 1s;   }
@@ -332,13 +312,12 @@
     .notif-yellow .notif-icon { background: #fff8e1; color: #d9a81e; }
     .notif-teal   .notif-icon { background: #e0f0f8; color: #1a3b5a; }
 
-    /* Tablet/mobile: hide mockup */
     @media (max-width: 968px) {
       .hero-inner { grid-template-columns: 1fr; }
       .hero-mockup { display: none; }
     }
 
-    /* ─── PROBLEMA (P) ─────────────────────────────────────── */
+    /* ─── PROBLEMA ──────────────────────────────────────────── */
     .problema { background: var(--bg-warm); }
     .problema .section-label { background: var(--red-soft); color: var(--red-strong); }
 
@@ -377,17 +356,15 @@
 
     .pain-card h3 {
       font-size: clamp(17px, 2.4vw, 20px);
-      font-weight: 800;
-      line-height: 1.25; color: var(--text);
-      margin-bottom: 10px;
-      letter-spacing: -.01em;
+      font-weight: 800; line-height: 1.25; color: var(--text);
+      margin-bottom: 10px; letter-spacing: -.01em;
     }
     .pain-card p {
       font-size: clamp(14px, 1.8vw, 15.5px);
       color: var(--text-muted); line-height: 1.6;
     }
 
-    /* ─── AGITAÇÃO (A) ─────────────────────────────────────── */
+    /* ─── AGITAÇÃO ──────────────────────────────────────────── */
     .agitacao {
       background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
       color: white; position: relative; overflow: hidden;
@@ -414,9 +391,7 @@
       border: 1px solid rgba(255,255,255,.1);
       border-radius: var(--radius-lg);
       padding: clamp(28px, 5vw, 44px);
-      text-align: center;
-      width: 100%;
-      position: relative;
+      text-align: center; width: 100%;
       backdrop-filter: blur(10px);
     }
     .big-loss-label {
@@ -428,170 +403,478 @@
     .big-loss-value {
       font-weight: 900;
       font-size: clamp(48px, 9vw, 80px);
-      line-height: 1;
-      letter-spacing: -.04em;
-      color: #ff6b6b;
-      margin: 8px 0;
+      line-height: 1; letter-spacing: -.04em;
+      color: #ff6b6b; margin: 8px 0;
     }
     .big-loss-value::before { content: '−'; margin-right: 8px; }
     .big-loss-sub {
-      font-size: 15px;
-      color: rgba(255,255,255,.6);
+      font-size: 15px; color: rgba(255,255,255,.6);
       margin-top: 12px;
     }
+    .big-loss-sub strong { color: #ff6b6b; }
 
-    .stats-grid {
+    .truth-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
       margin-top: clamp(32px, 5vw, 48px);
     }
-    .stat-card {
+    .truth-card {
       background: rgba(255,255,255,.04);
       border: 1px solid rgba(255,255,255,.08);
       border-radius: var(--radius);
       padding: 28px 24px;
       backdrop-filter: blur(10px);
     }
-    .stat-number {
-      font-weight: 900;
-      font-size: clamp(32px, 5vw, 44px);
-      line-height: 1;
-      color: var(--yellow);
-      letter-spacing: -.03em;
+    .truth-card-quote {
+      font-weight: 700;
+      font-size: clamp(17px, 2.5vw, 20px);
+      line-height: 1.3; color: var(--yellow);
+      letter-spacing: -.01em;
       margin-bottom: 12px;
     }
-    .stat-text {
+    .truth-card-text {
       font-size: clamp(14px, 1.8vw, 15px);
       color: rgba(255,255,255,.7);
       line-height: 1.5;
     }
+    .truth-card-text strong { color: white; font-weight: 700; }
 
     .agitacao-quote {
       text-align: center;
       margin-top: clamp(40px, 6vw, 56px);
       font-weight: 700;
-      font-size: clamp(18px, 2.8vw, 24px);
+      font-size: clamp(18px, 2.8vw, 26px);
       color: white;
-      max-width: 700px;
+      max-width: 720px;
       margin-left: auto; margin-right: auto;
       line-height: 1.4;
+      letter-spacing: -.01em;
     }
     .agitacao-quote span { color: var(--yellow); }
 
-    /* ─── SOLUÇÃO (S) ──────────────────────────────────────── */
-    .solucao { background: var(--white); }
-    .solucao .section-label { background: rgba(26,59,90,.08); color: var(--teal); }
+    /* ─── AUTORIDADE ────────────────────────────────────────── */
+    .autoridade { background: var(--white); }
+    .autoridade .section-label { background: rgba(26,59,90,.08); color: var(--teal); }
 
-    .features-grid {
+    .autoridade-inner {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: clamp(20px, 3vw, 28px);
+      grid-template-columns: 1fr 1.2fr;
+      align-items: center;
+      gap: clamp(36px, 6vw, 64px);
       margin-top: clamp(40px, 6vw, 60px);
     }
 
-    .feature-card {
-      background: var(--bg);
-      border-radius: var(--radius);
-      padding: clamp(28px, 3.5vw, 36px) clamp(24px, 3vw, 30px);
-      border: 2px solid transparent;
-      transition: var(--transition);
-      position: relative; overflow: hidden;
-    }
-    .feature-card::after {
-      content: ''; position: absolute;
-      bottom: 0; left: 0; right: 0; height: 4px;
-      background: linear-gradient(90deg, var(--teal), var(--yellow));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .4s var(--transition);
-    }
-    .feature-card:hover {
-      border-color: rgba(26,59,90,.1);
-      background: var(--white);
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-    }
-    .feature-card:hover::after { transform: scaleX(1); }
-
-    .feature-icon {
-      width: 56px; height: 56px; border-radius: 16px;
+    .autoridade-photo {
       background: var(--teal);
+      border-radius: var(--radius-lg);
+      aspect-ratio: 4 / 5;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 22px;
+      position: relative; overflow: hidden;
+      color: var(--yellow);
+      box-shadow: var(--shadow-lg);
     }
-    .feature-icon svg { width: 28px; height: 28px; color: var(--yellow); }
+    .autoridade-photo::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(247,192,38,.15), transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(247,192,38,.08), transparent 50%);
+    }
+    .autoridade-photo-content {
+      position: relative; z-index: 1; text-align: center;
+      padding: 24px;
+    }
+    .autoridade-photo svg {
+      width: 64px; height: 64px;
+      color: var(--yellow);
+      margin-bottom: 16px;
+      opacity: .9;
+    }
+    .autoridade-photo h4 {
+      font-weight: 900;
+      font-size: clamp(22px, 3vw, 28px);
+      color: white;
+      letter-spacing: -.02em;
+      margin-bottom: 6px;
+    }
+    .autoridade-photo p {
+      color: rgba(255,255,255,.55);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .autoridade-handle {
+      display: inline-block;
+      margin-top: 14px;
+      background: var(--yellow);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 50px;
+    }
 
-    .feature-card h3 {
-      font-size: clamp(17px, 2.4vw, 20px);
-      font-weight: 800;
+    .autoridade-body h3 {
+      font-weight: 900;
+      font-size: clamp(22px, 3.5vw, 32px);
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      margin-bottom: 20px;
       color: var(--text);
-      margin-bottom: 10px;
-      letter-spacing: -.01em;
     }
-    .feature-card p {
-      font-size: clamp(14px, 1.8vw, 15px);
+    .autoridade-body > p {
+      color: var(--text-muted);
+      font-size: clamp(15px, 2vw, 16.5px);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .autoridade-body p strong { color: var(--text); font-weight: 700; }
+
+    .credentials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .cred {
+      background: var(--bg);
+      padding: 18px 16px;
+      border-radius: 14px;
+      border-left: 3px solid var(--yellow);
+    }
+    .cred-value {
+      font-weight: 900;
+      font-size: clamp(20px, 3vw, 26px);
+      color: var(--teal);
+      letter-spacing: -.02em;
+      line-height: 1;
+    }
+    .cred-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 900px) {
+      .autoridade-inner { grid-template-columns: 1fr; }
+      .autoridade-photo { aspect-ratio: 16 / 10; max-height: 380px; }
+    }
+
+    /* ─── SOLUÇÃO / COMBO ──────────────────────────────────── */
+    .solucao { background: var(--bg); }
+    .solucao .section-label { background: rgba(22,163,74,.12); color: var(--green); }
+
+    .combo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: clamp(40px, 6vw, 56px);
+    }
+
+    .combo-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: clamp(32px, 4vw, 44px);
+      box-shadow: var(--shadow);
+      position: relative; overflow: hidden;
+      transition: var(--transition);
+    }
+    .combo-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+    .combo-card-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--teal); color: var(--yellow);
+      font-size: 11.5px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+    .combo-card h3 {
+      font-weight: 900;
+      font-size: clamp(20px, 3vw, 26px);
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+    .combo-card > p {
+      font-size: clamp(14px, 1.9vw, 15.5px);
       color: var(--text-muted);
       line-height: 1.6;
+      margin-bottom: 20px;
     }
 
-    .feature-pill {
-      display: inline-block; margin-top: 16px;
-      background: rgba(26,59,90,.08); color: var(--teal);
-      font-size: 11.5px; font-weight: 700; letter-spacing: .04em;
-      padding: 5px 12px; border-radius: 50px;
+    .combo-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .combo-list li {
+      display: flex; align-items: start; gap: 10px;
+      font-size: clamp(13.5px, 1.7vw, 14.5px);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .combo-list svg {
+      width: 18px; height: 18px;
+      color: var(--green); flex-shrink: 0;
+      margin-top: 2px;
     }
 
-    /* ─── HOW IT WORKS ─────────────────────────────────────── */
-    .how { background: var(--teal); position: relative; overflow: hidden; }
-    .how::before {
+    @media (max-width: 760px) {
+      .combo-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── MÉTODO 4 PASSOS ───────────────────────────────────── */
+    .metodo { background: var(--teal); position: relative; overflow: hidden; }
+    .metodo::before {
       content: ''; position: absolute; inset: 0;
       background: radial-gradient(circle at 30% 50%, rgba(247,192,38,.06), transparent 50%);
       pointer-events: none;
     }
-    .how .container { position: relative; z-index: 1; }
-    .how .section-label { background: rgba(247,192,38,.15); color: var(--yellow); }
-    .how .section-title { color: var(--white); }
-    .how .section-sub { color: rgba(255,255,255,.65); }
+    .metodo .container { position: relative; z-index: 1; }
+    .metodo .section-label { background: rgba(247,192,38,.15); color: var(--yellow); }
+    .metodo .section-title { color: var(--white); }
+    .metodo .section-sub { color: rgba(255,255,255,.65); }
 
-    .how-header { text-align: center; max-width: 620px; margin: 0 auto; }
-    .how-header .section-sub { margin-left: auto; margin-right: auto; }
+    .metodo-header { text-align: center; max-width: 640px; margin: 0 auto; }
+    .metodo-header .section-sub { margin-left: auto; margin-right: auto; }
 
     .steps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: clamp(32px, 5vw, 40px);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: clamp(24px, 4vw, 32px);
       margin-top: clamp(48px, 8vw, 64px);
     }
-
-    .step { text-align: center; padding: 0 12px; }
-
+    .step {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 32px 26px;
+      text-align: left;
+      transition: var(--transition);
+    }
+    .step:hover {
+      background: rgba(255,255,255,.06);
+      transform: translateY(-4px);
+    }
     .step-number {
-      width: 72px; height: 72px; border-radius: 50%;
+      width: 52px; height: 52px; border-radius: 14px;
       background: var(--yellow); color: var(--teal);
-      font-weight: 900; font-size: 28px;
+      font-weight: 900; font-size: 22px;
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 24px;
-      box-shadow: 0 8px 24px rgba(247,192,38,.35);
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(247,192,38,.3);
       letter-spacing: -.02em;
     }
-
     .step h3 {
-      font-size: clamp(17px, 2.4vw, 20px);
-      font-weight: 800;
-      color: var(--white); margin-bottom: 10px;
-      letter-spacing: -.01em;
+      font-size: clamp(16px, 2.2vw, 18px);
+      font-weight: 800; color: var(--white);
+      margin-bottom: 10px; letter-spacing: -.01em;
+      line-height: 1.25;
     }
     .step p {
-      font-size: clamp(14px, 1.8vw, 15px);
+      font-size: 14px;
       color: rgba(255,255,255,.65);
       line-height: 1.6;
     }
 
-    /* ─── TESTIMONIALS ─────────────────────────────────────── */
-    .testimonials { background: var(--bg); }
-    .testimonials .section-label { background: rgba(26,59,90,.08); color: var(--teal); }
-    .testimonials .reveal { text-align: center; max-width: 620px; margin: 0 auto; }
-    .testimonials .section-sub { margin-left: auto; margin-right: auto; }
+    /* ─── INCLUSO ───────────────────────────────────────────── */
+    .incluso { background: var(--white); }
+    .incluso .section-label { background: rgba(247,192,38,.15); color: var(--yellow-dark); }
+
+    .incluso-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: clamp(40px, 6vw, 60px);
+    }
+
+    .item {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 24px 22px;
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    .item:hover {
+      border-color: var(--yellow);
+      background: white;
+      box-shadow: var(--shadow);
+    }
+    .item-icon {
+      width: 42px; height: 42px; border-radius: 11px;
+      background: var(--teal);
+      color: var(--yellow);
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .item-icon svg { width: 22px; height: 22px; }
+    .item-content { flex: 1; }
+    .item-tag {
+      display: inline-block;
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--yellow-dark);
+      background: rgba(247,192,38,.12);
+      padding: 3px 10px; border-radius: 50px;
+      margin-bottom: 8px;
+    }
+    .item-tag.tag-main { color: var(--green); background: var(--green-soft); }
+    .item h3 {
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 4px;
+      letter-spacing: -.01em;
+      line-height: 1.25;
+    }
+    .item p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .item-value {
+      display: block;
+      margin-top: 6px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .item-value span {
+      color: var(--green);
+      text-decoration: line-through;
+    }
+
+    /* ─── OFERTA / PRICING ─────────────────────────────────── */
+    .oferta {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+      position: relative; overflow: hidden;
+    }
+    .oferta::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(247,192,38,.1), transparent 60%);
+      pointer-events: none;
+    }
+    .oferta .container { position: relative; z-index: 1; text-align: center; }
+    .oferta .section-label { background: rgba(247,192,38,.18); color: var(--yellow); }
+    .oferta .section-title { color: white; }
+    .oferta .section-title span { color: var(--yellow); }
+    .oferta .section-sub { color: rgba(255,255,255,.7); margin-left: auto; margin-right: auto; }
+
+    .price-card {
+      max-width: 620px; margin: clamp(40px, 6vw, 60px) auto 0;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: clamp(36px, 5vw, 56px) clamp(24px, 4vw, 48px);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      border: 3px solid var(--yellow);
+    }
+
+    .price-card-tag {
+      position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+      background: var(--yellow); color: var(--teal);
+      font-weight: 800; font-size: 12px;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: 8px 18px; border-radius: 50px;
+      box-shadow: 0 4px 16px rgba(247,192,38,.4);
+      white-space: nowrap;
+    }
+
+    .price-from {
+      color: var(--text-muted);
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .price-from s { color: #c0c0c0; }
+    .price-main {
+      display: flex; align-items: baseline; justify-content: center; gap: 8px;
+      margin: 8px 0;
+    }
+    .price-currency {
+      font-weight: 700; font-size: clamp(20px, 3vw, 28px);
+      color: var(--teal);
+    }
+    .price-amount {
+      font-weight: 900;
+      font-size: clamp(64px, 11vw, 96px);
+      color: var(--teal);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+    .price-suffix {
+      font-weight: 700; font-size: 18px;
+      color: var(--text-muted);
+    }
+    .price-installment {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-top: 4px;
+    }
+    .price-installment strong { color: var(--teal); font-weight: 800; }
+
+    .btn-cta-big {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--yellow); color: var(--teal);
+      font-weight: 800;
+      font-size: clamp(15px, 2vw, 18px);
+      padding: clamp(18px, 2.6vw, 22px) clamp(28px, 4vw, 44px);
+      border-radius: 50px; text-decoration: none;
+      box-shadow: 0 8px 28px rgba(247,192,38,.45);
+      transition: var(--transition);
+      width: 100%; margin-top: 28px;
+      letter-spacing: -.01em;
+    }
+    .btn-cta-big:hover {
+      background: var(--yellow-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(247,192,38,.55);
+    }
+    .btn-cta-big svg { width: 22px; height: 22px; }
+
+    .guarantee {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+      padding: 18px;
+      background: var(--green-soft);
+      border-radius: 14px;
+      text-align: left;
+    }
+    .guarantee-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--green); color: white;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .guarantee-icon svg { width: 22px; height: 22px; }
+    .guarantee-title { font-weight: 800; color: var(--text); font-size: 14px; line-height: 1.2; }
+    .guarantee-text { font-size: 12.5px; color: var(--text-muted); margin-top: 3px; line-height: 1.4; }
+
+    .urgency {
+      margin-top: 18px;
+      padding: 12px 16px;
+      background: rgba(217,64,64,.08);
+      border-radius: 10px;
+      font-size: 13px;
+      color: var(--red-strong);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .urgency::before {
+      content: '🔥'; font-size: 14px;
+    }
+
+    /* ─── DEPOIMENTOS ───────────────────────────────────────── */
+    .depoimentos { background: var(--bg); }
+    .depoimentos .section-label { background: rgba(26,59,90,.08); color: var(--teal); }
+    .depoimentos .reveal { text-align: center; max-width: 620px; margin: 0 auto; }
+    .depoimentos .section-sub { margin-left: auto; margin-right: auto; }
 
     .testimonials-grid {
       display: grid;
@@ -616,10 +899,8 @@
 
     .testimonial-text {
       font-size: clamp(15px, 1.9vw, 16px);
-      line-height: 1.7;
-      color: var(--text);
-      font-style: italic;
-      flex: 1;
+      line-height: 1.7; color: var(--text);
+      font-style: italic; flex: 1;
     }
     .testimonial-text::before { content: '"'; }
     .testimonial-text::after  { content: '"'; }
@@ -633,109 +914,52 @@
       color: var(--yellow); flex-shrink: 0;
       letter-spacing: -.02em;
     }
-    .author-name {
-      font-weight: 700; font-size: 15px;
-      color: var(--text); display: block;
-    }
-    .author-role {
-      font-size: 12.5px; color: var(--text-muted);
-      display: block; margin-top: 2px;
-    }
+    .author-name { font-weight: 700; font-size: 15px; color: var(--text); display: block; }
+    .author-role { font-size: 12.5px; color: var(--text-muted); display: block; margin-top: 2px; }
 
-    /* ─── PRICING / CTA FINAL ─────────────────────────────── */
-    .pricing { background: var(--white); }
-    .pricing > .container > .reveal { text-align: center; }
-    .pricing .section-label { background: rgba(247,192,38,.15); color: var(--yellow-dark); }
-    .pricing .section-sub { margin-left: auto; margin-right: auto; }
+    /* ─── FAQ ──────────────────────────────────────────────── */
+    .faq { background: var(--white); }
+    .faq .section-label { background: rgba(26,59,90,.08); color: var(--teal); }
+    .faq .reveal { text-align: center; max-width: 620px; margin: 0 auto; }
+    .faq .section-sub { margin-left: auto; margin-right: auto; }
 
-    .pricing-card {
-      max-width: 640px; margin: clamp(40px, 6vw, 60px) auto 0;
-      background: var(--teal);
-      border-radius: var(--radius-lg);
-      padding: clamp(40px, 6vw, 64px) clamp(28px, 4vw, 52px);
-      text-align: center;
-      position: relative; overflow: hidden;
-      box-shadow: var(--shadow-lg);
+    .faq-list {
+      max-width: 760px; margin: clamp(40px, 6vw, 56px) auto 0;
+      display: flex; flex-direction: column; gap: 12px;
     }
-    .pricing-card::before {
-      content: '';
-      position: absolute; top: -60px; right: -60px;
-      width: 200px; height: 200px; border-radius: 50%;
-      background: rgba(247,192,38,.1);
-    }
-    .pricing-card::after {
-      content: '';
-      position: absolute; bottom: -40px; left: -40px;
-      width: 140px; height: 140px; border-radius: 50%;
-      background: rgba(247,192,38,.07);
-    }
-
-    .pricing-tag {
-      display: inline-block;
-      background: rgba(247,192,38,.15); color: var(--yellow);
-      border: 1px solid rgba(247,192,38,.3);
-      font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-      padding: 6px 16px; border-radius: 50px;
-      margin-bottom: 22px;
-      position: relative; z-index: 1;
-    }
-
-    .pricing-card h2 {
-      font-weight: 900;
-      font-size: clamp(26px, 4.2vw, 40px);
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 14px;
-      letter-spacing: -.03em;
-      position: relative; z-index: 1;
-    }
-    .pricing-card h2 em {
-      font-style: normal; color: var(--yellow);
-    }
-    .pricing-card p {
-      font-size: clamp(15px, 2vw, 17px);
-      color: rgba(255,255,255,.7);
-      margin-bottom: 32px; line-height: 1.6;
-      position: relative; z-index: 1;
-    }
-
-    .pricing-features {
-      list-style: none;
-      display: flex; flex-direction: column; gap: 13px;
-      margin-bottom: 36px; text-align: left;
-      position: relative; z-index: 1;
-    }
-    .pricing-features li {
-      display: flex; align-items: center; gap: 12px;
-      font-size: clamp(14px, 1.9vw, 15.5px);
-      color: rgba(255,255,255,.85);
-      font-weight: 500;
-    }
-    .pricing-features li svg {
-      width: 20px; height: 20px;
-      color: var(--yellow); flex-shrink: 0;
-    }
-
-    .btn-cta-big {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      background: var(--yellow); color: var(--teal);
-      font-weight: 700;
-      font-size: clamp(15px, 2vw, 17.5px);
-      padding: clamp(16px, 2.5vw, 20px) clamp(28px, 4vw, 44px);
-      border-radius: 50px; text-decoration: none;
-      box-shadow: 0 8px 28px rgba(247,192,38,.45);
+    .faq-item {
+      background: var(--bg);
+      border-radius: 14px;
+      overflow: hidden;
       transition: var(--transition);
-      position: relative; z-index: 1; width: 100%;
     }
-    .btn-cta-big:hover {
-      background: var(--yellow-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 14px 36px rgba(247,192,38,.55);
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 22px 26px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+      font-weight: 700;
+      font-size: clamp(15px, 2vw, 16.5px);
+      color: var(--text);
+      letter-spacing: -.01em;
+      line-height: 1.4;
     }
-
-    .pricing-note {
-      font-size: 12.5px; color: rgba(255,255,255,.4);
-      margin-top: 16px; position: relative; z-index: 1;
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--teal);
+      transition: transform .3s;
+      flex-shrink: 0;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p {
+      padding: 0 26px 22px;
+      font-size: clamp(14px, 1.9vw, 15.5px);
+      color: var(--text-muted);
+      line-height: 1.65;
     }
 
     /* ─── FOOTER ───────────────────────────────────────────── */
@@ -794,7 +1018,6 @@
       .floating-cta a { padding: 11px 18px; font-size: 13.5px; }
     }
 
-    /* ─── EXTRA RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 600px) {
       .hero-stats { gap: 20px; }
       .hero-stat-label { max-width: none; }
@@ -810,14 +1033,17 @@
   <div class="nav-inner">
     <a href="#" class="logo">
       <div class="logo-icon">
-        <span>P</span><span>S</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 7c0-1.1-.9-2-2-2h-4l-2-2H6c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h11"/>
+          <path d="M14 14l3 3 5-5"/>
+        </svg>
       </div>
-      <div>
-        <span class="logo-name">PS Pro</span>
-        <span class="logo-sub">Orçamentos Inteligentes</span>
+      <div class="logo-text">
+        <span class="logo-name">Chega de Chutar Preço</span>
+        <span class="logo-sub">por Painel Services</span>
       </div>
     </a>
-    <a href="https://orcamentopro.ori.lat/login" class="nav-cta">Começar Grátis →</a>
+    <a href="https://painelservices.com.br/guia-pratico-do-orcamento-de-pintura-sem-erros/" class="nav-cta">Quero o método →</a>
   </div>
 </nav>
 
@@ -838,49 +1064,50 @@
     <div class="hero-inner">
 
       <div class="hero-content">
-        <div class="hero-badge">Para Pintores e Reformistas</div>
+        <div class="hero-badge">Curso + App + 5 Bônus</div>
 
         <h1>Chega de<br /><em>Chutar</em> Preço!</h1>
 
         <p class="hero-sub">
-          Você está deixando <strong>milhares de reais na mesa</strong> todo mês.
-          Descubra o preço certo para cada serviço de pintura e reforma — e pare de trabalhar de graça.
+          O método criado por quem já <strong>faturou R$ 7 milhões com pintura</strong> — em menos de 2 horas você aprende a calcular o preço certo e nunca mais trabalha de graça.
         </p>
 
         <div class="hero-actions">
-          <a href="https://orcamentopro.ori.lat/login" class="btn-primary">
+          <a href="https://painelservices.com.br/guia-pratico-do-orcamento-de-pintura-sem-erros/" class="btn-primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            Começar Grátis Agora
+            Quero o método completo
           </a>
-          <span class="hero-note">Sem cartão · Acesso imediato</span>
+          <div class="hero-price">
+            <span class="hero-price-from">De R$ 397</span>
+            <span class="hero-price-now">Por R$ 47 ou 6x R$ 8,82</span>
+          </div>
         </div>
 
         <div class="hero-stats">
           <div>
-            <span class="hero-stat-value">+150</span>
-            <span class="hero-stat-label">serviços com preço de mercado</span>
+            <span class="hero-stat-value">+277k</span>
+            <span class="hero-stat-label">profissionais já seguem o método</span>
           </div>
           <div>
-            <span class="hero-stat-value">3 min</span>
-            <span class="hero-stat-label">para montar um orçamento</span>
+            <span class="hero-stat-value">2h</span>
+            <span class="hero-stat-label">para dominar o método completo</span>
           </div>
           <div>
-            <span class="hero-stat-value">R$ 0</span>
-            <span class="hero-stat-label">para começar a usar</span>
+            <span class="hero-stat-value">7 dias</span>
+            <span class="hero-stat-label">de garantia incondicional</span>
           </div>
         </div>
       </div>
 
       <div class="hero-mockup">
         <div class="phone-scene">
-
           <div class="notif notif-1 notif-green">
             <div class="notif-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div>
-              <span class="notif-title">Orçamento Fechado!</span>
-              <span class="notif-sub">R$ 7.944,50 · Olavo Bilac</span>
+              <span class="notif-title">Preço certo!</span>
+              <span class="notif-sub">Não foi mais chute</span>
             </div>
           </div>
 
@@ -896,11 +1123,11 @@
 
           <div class="notif notif-3 notif-teal">
             <div class="notif-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <div>
-              <span class="notif-title">Novo Cliente</span>
-              <span class="notif-sub">Claudio Manoel cadastrado</span>
+              <span class="notif-title">Cálculo em 3 min</span>
+              <span class="notif-sub">Antes: 2 horas</span>
             </div>
           </div>
 
@@ -910,16 +1137,15 @@
             </div>
             <div>
               <span class="notif-title">R$ 30.641,59</span>
-              <span class="notif-sub">Total faturado este mês</span>
+              <span class="notif-sub">Faturado este mês</span>
             </div>
           </div>
 
           <div class="phone-frame">
             <div class="phone-screen">
-              <img src="mockup/3.jpeg" alt="PS Pro dashboard no celular" />
+              <img src="mockup/3.jpeg" alt="App PS Pro com o método aplicado" />
             </div>
           </div>
-
         </div>
       </div>
 
@@ -927,14 +1153,14 @@
   </div>
 </section>
 
-<!-- ─── P • PROBLEMA ──────────────────────────────────────── -->
+<!-- ─── PROBLEMA ──────────────────────────────────────────── -->
 <section class="section problema" id="problema">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">O problema</span>
-      <h2 class="section-title">A verdade que <span>ninguém te conta</span></h2>
+      <span class="section-label">Isso aqui te parece familiar?</span>
+      <h2 class="section-title">Você não está sozinho.<br /><span>Todo pintor passa por isso.</span></h2>
       <p class="section-sub">
-        Todo pintor autônomo passa pela mesma situação — e quase ninguém percebe a tempo.
+        Você se forma como pintor, mas <strong>ninguém te ensina a calcular o preço certo</strong>. E aí começa a história que você conhece bem.
       </p>
     </div>
 
@@ -945,8 +1171,8 @@
             <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
           </svg>
         </div>
-        <h3>Você não tem referência de preço</h3>
-        <p>Cada orçamento vira um chute. Você olha pro serviço, pensa um valor — e torce pra estar certo. No fim do mês, percebe que cobrou de menos.</p>
+        <h3>"Acho que dá uns R$ X..."</h3>
+        <p>É um chute bem intencionado, mas é chute. Você olha pro serviço, pensa um valor justo — e torce pra estar certo. No fim do mês, percebe que não estava.</p>
       </div>
 
       <div class="pain-card reveal reveal-d2">
@@ -955,8 +1181,8 @@
             <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
           </svg>
         </div>
-        <h3>Perde uma tarde inteira por orçamento</h3>
-        <p>Calculadora, papel, pesquisa no Google... e ainda tem que voltar pra obra. Tempo que poderia estar virando dinheiro, virou contas mal feitas.</p>
+        <h3>"Achei que duraria 5 dias..."</h3>
+        <p>Você trabalha mais dias do que planejou, gasta mais material do que previu. No final, sobra menos do que deveria. Às vezes <strong>não sobra nada</strong>.</p>
       </div>
 
       <div class="pain-card reveal reveal-d3">
@@ -965,149 +1191,312 @@
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
           </svg>
         </div>
-        <h3>Manda proposta amadora no WhatsApp</h3>
-        <p>"Mão de obra: R$ X. Material: R$ Y. Total: R$ Z." Sem detalhe, sem profissionalismo. O cliente compara com a proposta da empresa profissional — e te descarta.</p>
+        <h3>"Sinto que algo tá errado..."</h3>
+        <p>Aquela sensação ruim depois da obra: faturou, mas no caixa não rendeu. Você acha que o problema é o mercado ou o cliente — mas <strong>não é</strong>.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── A • AGITAÇÃO ──────────────────────────────────────── -->
+<!-- ─── AGITAÇÃO ──────────────────────────────────────────── -->
 <section class="section agitacao" id="agitacao">
   <div class="container">
     <div class="reveal" style="text-align:center; max-width: 720px; margin: 0 auto;">
       <span class="section-label">A conta que ninguém faz</span>
-      <h2 class="section-title">Quanto você perde por mês <span>chutando preço?</span></h2>
+      <h2 class="section-title">Quanto custa um <span>chute bem intencionado?</span></h2>
       <p class="section-sub" style="margin-left:auto;margin-right:auto;">
-        Faça as contas. Os números são assustadores — e você nem percebia.
+        O cálculo simples que mostra o tamanho real do prejuízo.
       </p>
     </div>
 
     <div class="big-loss reveal reveal-d1">
       <div class="big-loss-card">
-        <div class="big-loss-label">Perda média mensal de um pintor que chuta preço</div>
+        <div class="big-loss-label">Perda média de quem chuta preço</div>
         <div class="big-loss-value">R$ 8.400</div>
-        <div class="big-loss-sub">Mais de <strong style="color:#ff6b6b">R$ 100.000 por ano</strong> indo embora — sem você nem perceber.</div>
+        <div class="big-loss-sub">Por mês. Em 1 ano isso é <strong>mais de R$ 100.000</strong> indo embora — sem você nem perceber.</div>
       </div>
     </div>
 
-    <div class="stats-grid">
-      <div class="stat-card reveal reveal-d1">
-        <div class="stat-number">70%</div>
-        <p class="stat-text">dos pintores autônomos cobram <strong>até 40% abaixo</strong> do preço de mercado.</p>
+    <div class="truth-grid">
+      <div class="truth-card reveal reveal-d1">
+        <div class="truth-card-quote">"R$ 250 a diária"</div>
+        <p class="truth-card-text">É o que você acha que cobra. Mas o <strong>custo real</strong> da sua diária — incluindo ferramenta, deslocamento, INSS, ocioso — é <strong>R$ 358</strong>. Você descobre isso no curso.</p>
       </div>
-      <div class="stat-card reveal reveal-d2">
-        <div class="stat-number">R$ 200–800</div>
-        <p class="stat-text">é o que você deixa de ganhar <strong>em CADA orçamento</strong> mal calculado.</p>
+
+      <div class="truth-card reveal reveal-d2">
+        <div class="truth-card-quote">"M² entre R$ 47 e R$ 77"</div>
+        <p class="truth-card-text">São números de <strong>3 obras reais</strong> analisadas dentro do curso. Você vai aprender exatamente como chegar nesses valores — sem chute.</p>
       </div>
-      <div class="stat-card reveal reveal-d3">
-        <div class="stat-number">3 em 10</div>
-        <p class="stat-text">clientes contratam outro profissional só pela <strong>aparência amadora</strong> da proposta.</p>
+
+      <div class="truth-card reveal reveal-d3">
+        <div class="truth-card-quote">"Ninguém me ensinou."</div>
+        <p class="truth-card-text">Curso de pintor não vem com curso de gestão. Você aprendeu a executar — mas <strong>nunca aprendeu a precificar</strong>. E é isso que está te custando.</p>
       </div>
     </div>
 
     <p class="agitacao-quote reveal reveal-d2">
-      Você não merece trabalhar de graça.<br />
-      <span>Você merece cobrar o preço justo.</span>
+      O problema não é o mercado.<br />
+      <span>O problema é o processo.</span>
     </p>
   </div>
 </section>
 
-<!-- ─── S • SOLUÇÃO ───────────────────────────────────────── -->
-<section class="section solucao" id="solucao">
+<!-- ─── AUTORIDADE ────────────────────────────────────────── -->
+<section class="section autoridade" id="autoridade">
   <div class="container">
-    <div class="reveal">
-      <span class="section-label">A solução</span>
-      <h2 class="section-title">Apresentando o <span>PS Pro</span></h2>
-      <p class="section-sub">
-        O sistema que te diz <strong>exatamente quanto cobrar</strong> em cada serviço — e ainda monta o orçamento profissional pra você em minutos.
-      </p>
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Quem está te ensinando</span>
+      <h2 class="section-title">Não é teoria de coach.<br /><span>É método testado em centenas de obras.</span></h2>
     </div>
 
-    <div class="features-grid">
-      <div class="feature-card reveal reveal-d1">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+    <div class="autoridade-inner">
+      <div class="autoridade-photo reveal reveal-d1">
+        <div class="autoridade-photo-content">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
           </svg>
+          <h4>Gabriel & Ricardo Montenegro</h4>
+          <p>Pai e filho · Painel Services</p>
+          <span class="autoridade-handle">@painelservices</span>
         </div>
-        <h3>Tabela com 150+ Serviços</h3>
-        <p>Cada serviço com preço de referência e faixa mínima–máxima do mercado. Você nunca mais cobra abaixo do que vale.</p>
-        <span class="feature-pill">Resolve a falta de referência</span>
       </div>
 
-      <div class="feature-card reveal reveal-d2">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-          </svg>
-        </div>
-        <h3>Orçamento em 3 Minutos</h3>
-        <p>Escolha o cliente, adicione os serviços e a quantidade. O total é calculado automaticamente. Acabou a tarde perdida.</p>
-        <span class="feature-pill">Resolve a perda de tempo</span>
-      </div>
+      <div class="autoridade-body reveal reveal-d2">
+        <h3>Mais de duas décadas pintando — e ensinando profissionais a pararem de perder dinheiro.</h3>
+        <p>
+          Gabriel e Ricardo são pai e filho. Juntos, construíram a <strong>Painel Services</strong>, uma das maiores referências em pintura do Brasil, e foram os <strong>criadores da primeira marca própria de tintas brasileira</strong>.
+        </p>
+        <p>
+          O método "Chega de Chutar Preço" não nasceu numa apostila — ele foi <strong>criado na obra, testado em centenas de orçamentos</strong> e refinado até virar o sistema simples que você vai aprender agora.
+        </p>
 
-      <div class="feature-card reveal reveal-d3">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
-          </svg>
+        <div class="credentials">
+          <div class="cred">
+            <div class="cred-value">+20 anos</div>
+            <div class="cred-label">no mercado de pintura</div>
+          </div>
+          <div class="cred">
+            <div class="cred-value">R$ 7M+</div>
+            <div class="cred-label">faturados em pintura</div>
+          </div>
+          <div class="cred">
+            <div class="cred-value">+277k</div>
+            <div class="cred-label">seguidores no Instagram</div>
+          </div>
+          <div class="cred">
+            <div class="cred-value">1ª</div>
+            <div class="cred-label">marca de tintas BR criada por eles</div>
+          </div>
         </div>
-        <h3>Proposta Profissional</h3>
-        <p>Envie um orçamento que parece de empresa grande — completo, organizado e com sua marca. O cliente fecha na hora.</p>
-        <span class="feature-pill">Resolve a falta de credibilidade</span>
-      </div>
-
-      <div class="feature-card reveal reveal-d4">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
-          </svg>
-        </div>
-        <h3>Controle Total do Negócio</h3>
-        <p>Acompanhe orçamentos pendentes, fechados e recusados. Veja exatamente quanto você está faturando.</p>
-        <span class="feature-pill">Você no comando</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── HOW IT WORKS ──────────────────────────────────────── -->
-<section class="section how" id="como-funciona">
+<!-- ─── SOLUÇÃO / COMBO ──────────────────────────────────── -->
+<section class="section solucao" id="solucao">
   <div class="container">
-    <div class="how-header reveal">
-      <span class="section-label">Como funciona</span>
-      <h2 class="section-title">3 passos para nunca mais chutar preço</h2>
-      <p class="section-sub">Em menos de 5 minutos você já está faturando como profissional de verdade.</p>
+    <div class="reveal">
+      <span class="section-label">A solução</span>
+      <h2 class="section-title">Apresentando o <span>Chega de Chutar Preço</span></h2>
+      <p class="section-sub">
+        Um combo único — <strong>curso + app + 5 bônus</strong> — que tira você do achismo e te coloca no controle do seu negócio.
+      </p>
+    </div>
+
+    <div class="combo-grid">
+      <div class="combo-card reveal reveal-d1">
+        <div class="combo-card-tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Parte 1: O Curso
+        </div>
+        <h3>O método ensinado em 4 passos</h3>
+        <p>E-book com 6 capítulos + 3 videoaulas práticas. Você aprende, em menos de 2 horas, como compor o preço de cada serviço.</p>
+        <ul class="combo-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> E-book com os 5 pilares do orçamento</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Aula 1: Como calcular o preço real da diária</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Aula 2: Montagem do orçamento passo a passo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Aula 3: Como apresentar e fechar o cliente</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 3 exemplos reais com obras de R$ 47 a R$ 77/m²</li>
+        </ul>
+      </div>
+
+      <div class="combo-card reveal reveal-d2">
+        <div class="combo-card-tag" style="background:var(--yellow); color:var(--teal);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          Parte 2: O App PS Pro
+        </div>
+        <h3>A ferramenta que aplica o método pra você</h3>
+        <p>Sai do papel, vai pro celular. O app monta orçamentos profissionais com a tabela de preços já pronta — em 3 minutos.</p>
+        <ul class="combo-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Tabela com 150+ serviços de pintura e reforma</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Cada serviço com preço mín–máx do mercado</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Cadastro de clientes e orçamentos ilimitados</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Dashboard de controle: pendentes, fechados, faturamento</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Funciona no celular como aplicativo (PWA)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MÉTODO 4 PASSOS ───────────────────────────────────── -->
+<section class="section metodo" id="metodo">
+  <div class="container">
+    <div class="metodo-header reveal">
+      <span class="section-label">O método em 4 passos</span>
+      <h2 class="section-title">Como você vai aprender<br />a calcular o preço certo</h2>
+      <p class="section-sub">Um processo simples, sequencial, que cabe em qualquer obra — da reforma de R$ 2.000 ao prédio inteiro.</p>
     </div>
 
     <div class="steps">
       <div class="step reveal reveal-d1">
         <div class="step-number">1</div>
-        <h3>Cadastre seu cliente</h3>
-        <p>Adicione nome, telefone e endereço da obra. Pronto em segundos.</p>
+        <h3>Visita técnica com checklist</h3>
+        <p>Você aprende exatamente o que olhar na obra. Tempo, dificuldade, custo de cada detalhe. Sem deixar nada de fora.</p>
       </div>
       <div class="step reveal reveal-d2">
         <div class="step-number">2</div>
-        <h3>Monte o orçamento</h3>
-        <p>Escolha os serviços da tabela, informe a quantidade. O preço de mercado é preenchido na hora.</p>
+        <h3>Separação em serviços reais</h3>
+        <p>Proteção, preparação, selador, pintura. Cada etapa vira uma linha do orçamento — e o cliente entende exatamente o que tá pagando.</p>
       </div>
       <div class="step reveal reveal-d3">
         <div class="step-number">3</div>
-        <h3>Envie e feche</h3>
-        <p>Compartilhe o orçamento profissional com o cliente e acompanhe o status em tempo real.</p>
+        <h3>Cálculo com base em tempo real</h3>
+        <p>Mão de obra, material, equipamento. Você cobra pelo tempo real de execução — não pelo chute.</p>
+      </div>
+      <div class="step reveal reveal-d4">
+        <div class="step-number">4</div>
+        <h3>Apresentação com segurança</h3>
+        <p>Orçamento profissional pelo app PS Pro, com sua marca. Você fecha mais e cobra o que vale.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── TESTIMONIALS ──────────────────────────────────────── -->
-<section class="section testimonials" id="depoimentos">
+<!-- ─── INCLUSO ───────────────────────────────────────────── -->
+<section class="section incluso" id="incluso">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">Prova social</span>
-      <h2 class="section-title">Pintores que <span>pararam de perder dinheiro</span></h2>
-      <p class="section-sub">Veja o que mudou na vida de quem largou o chute.</p>
+      <span class="section-label">Tudo que está incluso</span>
+      <h2 class="section-title">Você recebe <span>9 itens completos</span></h2>
+      <p class="section-sub">
+        Não é só um e-book. É um pacote completo pra você sair do chute hoje mesmo.
+      </p>
+    </div>
+
+    <div class="incluso-grid">
+
+      <div class="item reveal reveal-d1">
+        <div class="item-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="item-content">
+          <span class="item-tag tag-main">Principal</span>
+          <h3>E-book "Chega de Chutar Preço"</h3>
+          <p>6 capítulos + 3 exemplos reais. O método completo no papel.</p>
+        </div>
+      </div>
+
+      <div class="item reveal reveal-d1">
+        <div class="item-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <div class="item-content">
+          <span class="item-tag tag-main">Principal</span>
+          <h3>3 Videoaulas Práticas</h3>
+          <p>Pilares do orçamento, cálculo da diária real e montagem passo a passo.</p>
+        </div>
+      </div>
+
+      <div class="item reveal reveal-d2">
+        <div class="item-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <div class="item-content">
+          <span class="item-tag tag-main">Principal</span>
+          <h3>Acesso ao App PS Pro</h3>
+          <p>Aplicativo com tabela de 150+ serviços e gestão de orçamentos.</p>
+        </div>
+      </div>
+
+      <div class="item reveal reveal-d2">
+        <div class="item-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="item-content">
+          <span class="item-tag">Bônus 1</span>
+          <h3>Checklist de Visita Técnica</h3>
+          <p>PDF imprimível pra você usar em toda visita à obra.</p>
+        </div>
+      </div>
+
+      <div class="item reveal reveal-d3">
+        <div class="item-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
+        </div>
+        <div class="item-content">
+          <span class="item-tag">Bônus 2</span>
+          <h3>Tabela Base de Orçamento</h3>
+          <p>Planilha pronta pra editar e enviar pro cliente.</p>
+        </div>
+      </div>
+
+      <div class="item reveal reveal-d3">
+        <div class="item-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="item-content">
+          <span class="item-tag">Bônus 3</span>
+          <h3>Biblioteca de Tempos</h3>
+          <p>Quanto tempo cada tipo de serviço leva. Direto da obra real.</p>
+        </div>
+      </div>
+
+      <div class="item reveal reveal-d4">
+        <div class="item-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="item-content">
+          <span class="item-tag">Bônus 4</span>
+          <h3>Cálculo da Diária Real</h3>
+          <p>Ficha com exemplo prático: R$ 250 aparente vs R$ 358 real.</p>
+        </div>
+      </div>
+
+      <div class="item reveal reveal-d4">
+        <div class="item-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="item-content">
+          <span class="item-tag">Bônus 5</span>
+          <h3>Calculando o Valor do M²</h3>
+          <p>3 obras reais analisadas, com preços de R$ 47 a R$ 77/m².</p>
+        </div>
+      </div>
+
+      <div class="item reveal reveal-d5">
+        <div class="item-icon" style="background: var(--green); color: white;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="item-content">
+          <h3 style="color:var(--green); font-size: 16px;">Tudo isso por R$ 47</h3>
+          <p style="font-weight: 600;">De <s style="color:#c0c0c0;">R$ 397</s> por R$ 47 ou 6× R$ 8,82.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── DEPOIMENTOS ───────────────────────────────────────── -->
+<section class="section depoimentos" id="depoimentos">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Quem aplicou o método</span>
+      <h2 class="section-title">Profissionais que <span>pararam de chutar</span></h2>
+      <p class="section-sub">Veja o que mudou na vida de quem aplicou o método.</p>
     </div>
 
     <div class="testimonials-grid">
@@ -1119,7 +1508,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="testimonial-text">Antes eu olhava pra parede e chutava um valor. Hoje abro o app, escolho o serviço e já sei o preço certo. Em 2 meses meu faturamento dobrou.</p>
+        <p class="testimonial-text">Quando vi o cálculo da diária real, caí da cadeira. Eu tava cobrando R$ 240 e meu custo era R$ 350. Tava literalmente trabalhando de graça.</p>
         <div class="testimonial-author">
           <div class="author-avatar">RS</div>
           <div>
@@ -1137,7 +1526,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="testimonial-text">A faixa mínima–máxima foi o que me convenceu. Agora sei se estou cobrando dentro do mercado. Meu faturamento subiu 38% no primeiro mês.</p>
+        <p class="testimonial-text">Apliquei o método de 4 passos no primeiro orçamento depois do curso. Fechei R$ 12.500 — antes teria fechado R$ 8.000. O Montenegro mudou meu jogo.</p>
         <div class="testimonial-author">
           <div class="author-avatar">MC</div>
           <div>
@@ -1155,7 +1544,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="testimonial-text">Eu mandava orçamento no papel, ninguém levava a sério. Agora envio pelo app e parece de empresa grande. Fechei 3 obras só na primeira semana.</p>
+        <p class="testimonial-text">Pago R$ 47 e ganhei o método + o app. Em uma semana já tinha pago o curso 20 vezes só com o que parei de perder. Indispensável.</p>
         <div class="testimonial-author">
           <div class="author-avatar">AF</div>
           <div>
@@ -1168,48 +1557,81 @@
   </div>
 </section>
 
-<!-- ─── PRICING / CTA FINAL ───────────────────────────────── -->
-<section class="section pricing" id="planos">
+<!-- ─── OFERTA ────────────────────────────────────────────── -->
+<section class="section oferta" id="oferta">
   <div class="container">
     <div class="reveal">
-      <span class="section-label">Comece agora</span>
-      <h2 class="section-title">Pare de chutar. <span>Comece a lucrar.</span></h2>
-      <p class="section-sub">Sem complicação, sem cartão de crédito, sem promessa furada.</p>
+      <span class="section-label">A oferta</span>
+      <h2 class="section-title">Pare de chutar.<br /><span>Comece hoje mesmo.</span></h2>
+      <p class="section-sub">
+        Acesso imediato. Garantia incondicional de 7 dias. <strong style="color:white">Vagas limitadas.</strong>
+      </p>
     </div>
 
-    <div class="pricing-card reveal">
-      <div class="pricing-tag">100% Grátis para começar</div>
-      <h2>Crie sua conta <em>agora</em></h2>
-      <p>Em 3 minutos você está fazendo seu primeiro orçamento com preço de mercado.</p>
+    <div class="price-card reveal">
+      <div class="price-card-tag">Oferta Limitada</div>
 
-      <ul class="pricing-features">
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Tabela completa com 150+ serviços de pintura e reforma
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Clientes e orçamentos ilimitados
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Dashboard de controle e faturamento
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Funciona no celular como aplicativo (PWA)
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Orçamentos com validade, observações e desconto
-        </li>
-      </ul>
+      <div class="price-from"><s>De R$ 397</s></div>
+      <div class="price-main">
+        <span class="price-currency">R$</span>
+        <span class="price-amount">47</span>
+      </div>
+      <div class="price-installment">à vista ou em <strong>6× de R$ 8,82</strong> no cartão</div>
 
-      <a href="https://orcamentopro.ori.lat/login" class="btn-cta-big">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        Criar minha conta grátis
+      <a href="https://painelservices.com.br/guia-pratico-do-orcamento-de-pintura-sem-erros/" class="btn-cta-big">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        Quero o método completo
       </a>
-      <p class="pricing-note">Sem cartão de crédito. Acesso imediato.</p>
+
+      <div class="guarantee">
+        <div class="guarantee-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div>
+          <div class="guarantee-title">Garantia incondicional de 7 dias</div>
+          <div class="guarantee-text">Se em 7 dias você achar que não valeu, devolvemos seu dinheiro. O risco é todo nosso.</div>
+        </div>
+      </div>
+
+      <div class="urgency">Vagas limitadas para os primeiros 50 compradores</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ──────────────────────────────────────────────── -->
+<section class="section faq" id="faq">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Perguntas frequentes</span>
+      <h2 class="section-title">Ainda em dúvida?</h2>
+      <p class="section-sub">As perguntas que todo pintor faz antes de comprar.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item reveal reveal-d1">
+        <summary>Sou iniciante. Esse método serve pra mim?</summary>
+        <p>Sim. O método foi pensado pra qualquer profissional — iniciante ou experiente. Se você cobra por pintura, dá pra aplicar. A linguagem é direta, sem jargão e sem fórmula complicada.</p>
+      </details>
+
+      <details class="faq-item reveal reveal-d2">
+        <summary>E se eu não gostar, consigo o reembolso?</summary>
+        <p>Sim. Garantia de 7 dias, sem perguntas. Você acessa todo o material, aplica o método e o app — se em 7 dias achar que não valeu, devolvemos cada centavo. O risco é todo nosso.</p>
+      </details>
+
+      <details class="faq-item reveal reveal-d3">
+        <summary>Quanto tempo leva pra dominar o método?</summary>
+        <p>Menos de 2 horas. O e-book é objetivo, as 3 videoaulas são diretas e os bônus são prontos pra usar. Em uma tarde você já está aplicando.</p>
+      </details>
+
+      <details class="faq-item reveal reveal-d4">
+        <summary>O acesso ao app PS Pro é vitalício?</summary>
+        <p>Sim, você compra uma vez e tem acesso ao curso, aos 5 bônus e ao app PS Pro. Sem mensalidade.</p>
+      </details>
+
+      <details class="faq-item reveal reveal-d5">
+        <summary>Funciona pra reforma e não só pintura?</summary>
+        <p>O método é focado em pintura, mas o app PS Pro inclui 150+ serviços que cobrem reforma em geral — impermeabilização, textura, gesso, papel de parede, demarcação, etc.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -1221,31 +1643,33 @@
       <div class="footer-brand">
         <a href="#" class="logo">
           <div class="logo-icon">
-            <span>P</span><span>S</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 7c0-1.1-.9-2-2-2h-4l-2-2H6c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h11"/>
+              <path d="M14 14l3 3 5-5"/>
+            </svg>
           </div>
-          <div>
-            <span class="logo-name">PS Pro</span>
-            <span class="logo-sub">Orçamentos Inteligentes</span>
+          <div class="logo-text">
+            <span class="logo-name">Chega de Chutar Preço</span>
+            <span class="logo-sub">por Painel Services</span>
           </div>
         </a>
-        <p class="footer-tagline">Chega de chutar preço. Comece a lucrar de verdade.</p>
+        <p class="footer-tagline">Pare de perder dinheiro. Comece a cobrar pelo valor real.</p>
       </div>
-      <a href="https://orcamentopro.ori.lat/login" class="footer-cta-small">Começar Grátis →</a>
+      <a href="https://painelservices.com.br/guia-pratico-do-orcamento-de-pintura-sem-erros/" class="footer-cta-small">Quero o método →</a>
     </div>
-    <p class="footer-copy">© 2026 PS Pro — Orçamentos Inteligentes. Feito para pintores e reformistas brasileiros.</p>
+    <p class="footer-copy">© 2026 Painel Services · Gabriel & Ricardo Montenegro · Feito para profissionais de pintura no Brasil.</p>
   </div>
 </footer>
 
 <!-- ─── FLOATING CTA ──────────────────────────────────────── -->
 <div class="floating-cta" id="floatingCta">
-  <a href="https://orcamentopro.ori.lat/login">
+  <a href="https://painelservices.com.br/guia-pratico-do-orcamento-de-pintura-sem-erros/">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-    Começar Grátis
+    Quero o método · R$ 47
   </a>
 </div>
 
 <script>
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -1256,7 +1680,6 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Floating CTA
   const floatingCta = document.getElementById('floatingCta');
   const heroCta = document.querySelector('.hero-actions');
   if (heroCta) {
@@ -1266,7 +1689,6 @@
     heroObserver.observe(heroCta);
   }
 
-  // Nav shadow on scroll
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
     nav.style.boxShadow = window.scrollY > 40 ? '0 4px 24px rgba(0,0,0,.25)' : 'none';
