@@ -283,11 +283,30 @@
     @media (max-width: 968px) {
       .hero-inner { grid-template-columns: 1fr; }
       .hero-mockup { margin-top: clamp(32px, 8vw, 56px); }
-      .phone-scene { width: min(220px, 65vw); }
+      .phone-scene { width: min(220px, 60vw); }
     }
     @media (max-width: 720px) {
-      /* notificações somem no celular pra não estourar a tela */
-      .notif { display: none; }
+      /* Notificações: versão compacta encostada no celular */
+      .notif {
+        padding: 6px 9px;
+        border-radius: 10px;
+        gap: 7px;
+        box-shadow: 0 6px 18px rgba(0,0,0,.28);
+      }
+      .notif-icon { width: 26px; height: 26px; border-radius: 7px; }
+      .notif-icon svg { width: 13px; height: 13px; }
+      .notif-title { font-size: 9.5px; }
+      .notif-sub { font-size: 8.5px; }
+
+      /* Reposiciona pra encostar suavemente na lateral, fora da notch */
+      .notif-1 { top: 10%;  left: -12px; right: auto; }
+      .notif-2 { top: 38%; right: -12px; left: auto; }
+      .notif-3 { bottom: 28%; left: -12px; right: auto; }
+      .notif-4 { bottom: 6%; right: -12px; left: auto; }
+    }
+    @media (max-width: 380px) {
+      /* Em celulares muito pequenos esconde notif do meio pra não poluir */
+      .notif-2, .notif-3 { display: none; }
     }
 
     /* PROBLEMA */
