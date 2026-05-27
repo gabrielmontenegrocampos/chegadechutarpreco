@@ -282,7 +282,12 @@
 
     @media (max-width: 968px) {
       .hero-inner { grid-template-columns: 1fr; }
-      .hero-mockup { display: none; }
+      .hero-mockup { margin-top: clamp(32px, 8vw, 56px); }
+      .phone-scene { width: min(220px, 65vw); }
+    }
+    @media (max-width: 720px) {
+      /* notificações somem no celular pra não estourar a tela */
+      .notif { display: none; }
     }
 
     /* PROBLEMA */
