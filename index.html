@@ -199,6 +199,15 @@ nav {
 .hero-photo-col {
   position: relative;
 }
+.hero-photo-col::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: clamp(160px, 28vw, 260px);
+  background: linear-gradient(to top, #060b18 0%, rgba(6,11,24,.6) 45%, transparent 100%);
+  pointer-events: none;
+  z-index: 3;
+}
 .hero-photo-col img {
   position: absolute;
   bottom: 0;
@@ -1105,8 +1114,6 @@ footer {
   <div class="hero-split">
     <div class="hero-content-col">
       <div class="hero-content">
-        <div class="hero-badge">Para pintores que cansaram de trabalhar no sufoco</div>
-
         <h1>Enquanto você chuta preço, seu concorrente fecha <em>as suas obras.</em></h1>
 
         <p class="hero-sub">
