@@ -143,43 +143,6 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
   66%       { transform: translate(-12px, 16px) scale(0.94); }
 }
 
-/* ---------- HERO RAIN PATTERN ---------- */
-.hero-rain {
-  position: absolute; inset: 0;
-  z-index: 0; pointer-events: none; overflow: hidden;
-}
-.hero-rain-streaks {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: calc(100% + 300px);
-  background-image:
-    radial-gradient(1.5px 90px  at   0px 235px, rgba(232,168,23,.11), transparent),
-    radial-gradient(1.5px 90px  at 300px 235px, rgba(232,168,23,.09), transparent),
-    radial-gradient(1px 1px     at 150px 117px, rgba(232,168,23,.22) 100%, transparent),
-    radial-gradient(1.5px 68px  at   0px 148px, rgba(35,100,160,.13), transparent),
-    radial-gradient(1.5px 68px  at 300px 148px, rgba(35,100,160,.11), transparent),
-    radial-gradient(1px 1px     at 150px  74px, rgba(35,100,160,.22) 100%, transparent),
-    radial-gradient(1.5px 95px  at   0px 197px, rgba(232,168,23,.07), transparent),
-    radial-gradient(1.5px 95px  at 300px 197px, rgba(232,168,23,.06), transparent),
-    radial-gradient(1px 1px     at 150px  98px, rgba(232,168,23,.14) 100%, transparent),
-    radial-gradient(1.5px 60px  at   0px 260px, rgba(27,58,92,.18),  transparent),
-    radial-gradient(1.5px 60px  at 300px 260px, rgba(27,58,92,.15),  transparent),
-    radial-gradient(1px 1px     at 150px 130px, rgba(27,58,92,.24)  100%, transparent);
-  background-size: 300px 300px;
-  background-repeat: repeat;
-  animation: hero-rain-fall 24s linear infinite;
-}
-.hero-rain-blur {
-  position: absolute; inset: 0;
-  backdrop-filter: blur(1.5px);
-  -webkit-backdrop-filter: blur(1.5px);
-  background-image: radial-gradient(circle at 50% 50%, transparent 0, transparent 1.5px, rgba(6,11,24,.68) 1.5px);
-  background-size: 7px 7px;
-}
-@keyframes hero-rain-fall {
-  0%   { transform: translateY(0); }
-  100% { transform: translateY(-300px); }
-}
 
 .hero-split {
   display: grid;
@@ -1133,10 +1096,6 @@ footer {
 
 <!-- HERO -->
 <section class="hero" id="inicio">
-  <div class="hero-rain" aria-hidden="true">
-    <div class="hero-rain-streaks"></div>
-    <div class="hero-rain-blur"></div>
-  </div>
   <div class="hero-split">
     <div class="hero-content-col">
       <div class="hero-content">
