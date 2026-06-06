@@ -105,38 +105,6 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
   width: 20px; height: 20px; color: var(--green); flex-shrink: 0; margin-top: 2px;
 }
 
-/* ---------- NAV ---------- */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(27,58,92,.97);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  padding: 14px 0;
-  transition: box-shadow .35s var(--ease);
-}
-.nav-inner {
-  display: flex; align-items: center; justify-content: space-between;
-  max-width: 1160px; margin: 0 auto; padding: 0 24px;
-}
-.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--white); }
-.logo-icon {
-  width: 40px; height: 40px; border-radius: 10px;
-  background: var(--gold);
-  display: flex; align-items: center; justify-content: center;
-}
-.logo-icon svg { width: 22px; height: 22px; color: var(--teal); }
-.logo-text { line-height: 1.15; }
-.logo-name { font-weight: 800; font-size: 15px; display: block; letter-spacing: -.01em; }
-.logo-sub  { font-size: 10.5px; color: rgba(255,255,255,.45); display: block; margin-top: 1px; font-weight: 500; }
-.nav-cta {
-  background: var(--gold); color: var(--teal);
-  font-weight: 700; font-size: 13.5px;
-  padding: 10px 22px; border-radius: 50px; text-decoration: none;
-  transition: all .3s var(--ease);
-}
-.nav-cta:hover { background: var(--gold-dark); transform: translateY(-1px); }
-
 /* ---------- HERO ---------- */
 .hero {
   background:
@@ -1074,7 +1042,7 @@ footer {
 @media (max-width: 640px) {
   .hero-split { grid-template-columns: 1fr; min-height: auto; }
   .hero-content-col { justify-content: flex-start; order: 2; padding-top: 0; margin-top: -72px; position: relative; z-index: 4; }
-  .hero-photo-col { order: 1; padding-top: 68px; position: relative; min-height: 0; }
+  .hero-photo-col { order: 1; padding-top: 16px; position: relative; min-height: 0; }
   .hero-photo-col img {
     position: static;
     width: min(340px, 92vw);
@@ -1104,8 +1072,6 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .nav-cta { padding: 9px 16px; font-size: 12.5px; }
-  .logo-sub { display: none; }
   .floating-cta { bottom: 14px; right: 14px; }
   .floating-cta a { padding: 11px 18px; font-size: 13px; }
 }
@@ -1114,22 +1080,6 @@ footer {
   
 </head>
 <body>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="#inicio" class="logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7c0-1.1-.9-2-2-2h-4l-2-2H6c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h11"></path><path d="M14 14l3 3 5-5"></path></svg>
-      </div>
-      <div class="logo-text">
-        <span class="logo-name">PS Pro</span>
-        <span class="logo-sub">por Painel Services</span>
-      </div>
-    </a>
-    <a href="https://pay.hotmart.com/X104648375J?checkoutMode=10&amp;bid=1779792240767" class="nav-cta">Quero o app →</a>
-  </div>
-</nav>
 
 <!-- HERO -->
 <section class="hero" id="inicio">
@@ -1768,18 +1718,6 @@ footer {
     heroObserver.observe(heroSection);
   }
 
-  // Nav shadow on scroll
-  const nav = document.querySelector('nav');
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        nav.style.boxShadow = window.scrollY > 40 ? '0 4px 24px rgba(0,0,0,.2)' : 'none';
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
 </script>
 
 </body></html>
