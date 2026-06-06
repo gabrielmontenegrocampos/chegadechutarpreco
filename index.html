@@ -370,9 +370,10 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
 /* ---------- SOLUÇÃO ---------- */
 .solucao { background: var(--white); }
 .solucao-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(36px, 6vw, 64px); align-items: center;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: clamp(32px, 5vw, 48px);
 }
+.solucao-content { max-width: 700px; }
 .solucao-content h2 {
   font-weight: 800; font-size: clamp(28px, 5vw, 46px);
   line-height: 1.08; letter-spacing: -.03em; margin-bottom: 20px;
@@ -385,7 +386,7 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
 .solucao-content strong { color: var(--text); font-weight: 700; }
 .solucao-mock { display: flex; justify-content: center; }
 .solucao-mock img {
-  width: min(300px, 70vw);
+  width: min(340px, 78vw);
   filter: drop-shadow(0 24px 48px rgba(0,0,0,.2));
   animation: heroFloat 6s ease-in-out infinite;
 }
@@ -1027,8 +1028,6 @@ footer {
   .hero-inner { grid-template-columns: 1fr; }
   .hero-mockup { margin-top: clamp(24px, 6vw, 40px); }
   .hero-mockup img { width: min(320px, 70vw); }
-  .solucao-inner { grid-template-columns: 1fr; }
-  .solucao-mock { order: -1; }
   .feature-inner { grid-template-columns: 1fr; }
   .feature.reverse .feature-inner { direction: ltr; }
   .feature-visual { order: -1; }
@@ -1188,9 +1187,9 @@ footer {
   <div class="container">
     <div class="solucao-inner">
       <div class="solucao-content reveal">
-        <h2>Apresentando o <span>PS Pro</span> — o app dos pintores que viraram empresários.</h2>
-        <p>Tudo que você precisa pra parar de chutar preço, fechar mais obras e <strong>enxergar de verdade quanto está lucrando</strong>.</p>
-        <p>No bolso, do celular, em qualquer obra do Brasil. <strong>Sem mensalidade</strong>. Pagou uma vez, é seu pra sempre.</p>
+        <h2>Para de trabalhar de graça.<br>O <span>PS Pro</span> calcula tudo antes de você bater o martelo.</h2>
+        <p>Orçamento, material, mão de obra e lucro real — tudo no celular, em qualquer obra do Brasil.</p>
+        <p><strong>Sem mensalidade</strong>. Pagou uma vez, é seu pra sempre.</p>
       </div>
       <div class="solucao-mock reveal reveal-d1">
         <img src="mockup/landing-dashboard.png" alt="App PS Pro — dashboard com orçamentos e faturamento">
