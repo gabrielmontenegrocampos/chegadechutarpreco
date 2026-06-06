@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Tutorial PS Pro — Como usar o app do zero</title>
+  <meta name="description" content="Aprenda a usar o PS Pro: configure sua empresa, cadastre serviços e clientes, crie e envie orçamentos profissionais." />
+  <meta name="theme-color" content="#1a3b5a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:        #1a3b5a;
+      --teal-light:  #234d76;
+      --teal-dark:   #112840;
+      --yellow:      #F7C026;
+      --yellow-dark: #d9a81e;
+      --bg:          #eef2f7;
+      --white:       #ffffff;
+      --text:        #1a2a3a;
+      --text-muted:  #5a7080;
+      --green:       #16a34a;
+      --green-soft:  #dcfce7;
+      --radius:      18px;
+      --radius-lg:   28px;
+      --shadow-sm:   0 2px 12px rgba(26,59,90,.08);
+      --shadow:      0 8px 32px rgba(26,59,90,.12);
+      --transition:  .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,59,90,.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding: 12px 0;
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 860px; margin: 0 auto; padding: 0 20px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--white); }
+    .logo-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--yellow); display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 14px; color: var(--teal);
+    }
+    .logo-text { font-weight: 800; font-size: 16px; }
+    .nav-back {
+      color: rgba(255,255,255,.7); font-size: 13px; font-weight: 600;
+      text-decoration: none; display: flex; align-items: center; gap: 6px;
+    }
+    .nav-back:hover { color: var(--white); }
+
+    /* HERO */
+    .hero {
+      padding: 120px 0 56px;
+      background: linear-gradient(160deg, var(--teal-dark) 0%, var(--teal) 60%, var(--teal-light) 100%);
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(247,192,38,.15); border: 1px solid rgba(247,192,38,.35);
+      color: var(--yellow); border-radius: 99px; padding: 6px 16px;
+      font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-weight: 900; font-size: clamp(28px, 5vw, 48px);
+      line-height: 1.1; letter-spacing: -.02em; color: var(--white);
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--yellow); }
+    .hero p {
+      font-size: clamp(15px, 2.2vw, 18px); color: rgba(255,255,255,.75);
+      max-width: 560px; margin: 0 auto 40px;
+    }
+
+    /* PROGRESS BAR */
+    .progress-bar {
+      display: flex; justify-content: center; gap: 0;
+      padding: 0 20px;
+    }
+    .progress-step {
+      display: flex; flex-direction: column; align-items: center;
+      position: relative; flex: 1; max-width: 120px;
+    }
+    .progress-step:not(:last-child)::after {
+      content: ''; position: absolute;
+      top: 18px; left: 50%; width: 100%; height: 2px;
+      background: rgba(255,255,255,.2);
+      z-index: 0;
+    }
+    .progress-dot {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,.15); border: 2px solid rgba(255,255,255,.3);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 13px; color: rgba(255,255,255,.6);
+      position: relative; z-index: 1;
+    }
+    .progress-label {
+      margin-top: 8px; font-size: 10px; font-weight: 700;
+      color: rgba(255,255,255,.5); text-align: center; text-transform: uppercase;
+      letter-spacing: .04em; line-height: 1.3;
+    }
+
+    /* MAIN CONTENT */
+    main { padding: 64px 0 100px; }
+
+    /* STEP CARD */
+    .step-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+    .step-header {
+      display: flex; align-items: center; gap: 16px;
+      padding: 28px 32px 24px;
+      border-bottom: 1px solid rgba(26,59,90,.07);
+    }
+    .step-number {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: var(--teal); display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 20px; color: var(--white);
+      flex-shrink: 0;
+    }
+    .step-number.yellow { background: var(--yellow); color: var(--teal); }
+    .step-number.green { background: var(--green); }
+    .step-title-wrap { flex: 1; }
+    .step-tag {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 4px;
+    }
+    .step-title {
+      font-weight: 800; font-size: clamp(18px, 3vw, 22px);
+      line-height: 1.2; color: var(--text);
+    }
+    .step-body { padding: 28px 32px; }
+    .step-intro {
+      font-size: 15px; color: var(--text-muted); margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    /* INSTRUCTION LIST */
+    .instruction-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .instruction-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 15px; line-height: 1.6;
+    }
+    .instr-num {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: var(--bg); border: 1.5px solid rgba(26,59,90,.12);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 12px; color: var(--teal);
+      flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* TIP BOX */
+    .tip-box {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: #fffbea; border: 1px solid rgba(247,192,38,.35);
+      border-radius: var(--radius); padding: 16px 20px; margin-top: 24px;
+    }
+    .tip-icon { font-size: 20px; flex-shrink: 0; line-height: 1.5; }
+    .tip-text { font-size: 14px; color: #7a5800; line-height: 1.6; }
+    .tip-text strong { color: #5a3e00; }
+
+    /* INFO BOX */
+    .info-box {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: #eef6ff; border: 1px solid rgba(26,59,90,.15);
+      border-radius: var(--radius); padding: 16px 20px; margin-top: 24px;
+    }
+    .info-text { font-size: 14px; color: var(--teal); line-height: 1.6; }
+    .info-text strong { font-weight: 700; }
+
+    /* SCREEN PREVIEW */
+    .screen-preview {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-top: 24px;
+      border: 1px solid rgba(26,59,90,.08);
+    }
+    .screen-preview-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;
+    }
+    .field-row {
+      background: var(--white); border-radius: 12px;
+      padding: 12px 16px; margin-bottom: 8px;
+      border: 1px solid rgba(26,59,90,.08);
+      font-size: 14px;
+    }
+    .field-row label { display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 2px; text-transform: uppercase; letter-spacing: .04em; }
+    .field-row span { font-weight: 600; color: var(--text); }
+
+    /* STATUS BADGES */
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 99px;
+      font-size: 13px; font-weight: 700;
+    }
+    .badge-draft { background: #f0f4f8; color: #5a7080; }
+    .badge-sent { background: #fff3cd; color: #7a5800; }
+    .badge-closed { background: var(--green-soft); color: #14532d; }
+    .badge-cancelled { background: #ffeaea; color: #991b1b; }
+
+    /* DIVIDER */
+    .step-divider {
+      text-align: center; padding: 8px 0; margin-bottom: 8px;
+      position: relative;
+    }
+    .step-divider::before {
+      content: ''; position: absolute;
+      top: 50%; left: 0; right: 0; height: 1px;
+      background: rgba(26,59,90,.1);
+    }
+    .step-divider span {
+      position: relative; background: var(--bg);
+      padding: 0 12px; font-size: 20px;
+    }
+
+    /* FINAL CTA */
+    .final-cta {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      text-align: center;
+      margin-top: 16px;
+    }
+    .final-cta h2 {
+      font-weight: 900; font-size: clamp(22px, 4vw, 32px);
+      color: var(--white); margin-bottom: 12px; line-height: 1.2;
+    }
+    .final-cta h2 span { color: var(--yellow); }
+    .final-cta p { color: rgba(255,255,255,.75); font-size: 15px; margin-bottom: 28px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--yellow); color: var(--teal);
+      font-weight: 800; font-size: 16px;
+      padding: 16px 36px; border-radius: 14px;
+      text-decoration: none; transition: var(--transition);
+    }
+    .btn-primary:hover { background: var(--yellow-dark); transform: translateY(-2px); }
+
+    @media (max-width: 600px) {
+      .step-header { padding: 20px; }
+      .step-body { padding: 20px; }
+      .final-cta { padding: 32px 20px; }
+      .progress-bar { gap: 0; }
+      .progress-label { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">PS</div>
+        <span class="logo-text">PS Pro</span>
+      </a>
+      <a href="index.html" class="nav-back">← Voltar ao site</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Tutorial completo</div>
+      <h1>Do zero ao <span>primeiro orçamento</span><br>em 10 minutos</h1>
+      <p>Siga esses 5 passos e você vai mandar orçamentos profissionais direto pelo celular ainda hoje.</p>
+
+      <div class="progress-bar">
+        <div class="progress-step">
+          <div class="progress-dot">1</div>
+          <div class="progress-label">Config.</div>
+        </div>
+        <div class="progress-step">
+          <div class="progress-dot">2</div>
+          <div class="progress-label">Serviços</div>
+        </div>
+        <div class="progress-step">
+          <div class="progress-dot">3</div>
+          <div class="progress-label">Clientes</div>
+        </div>
+        <div class="progress-step">
+          <div class="progress-dot">4</div>
+          <div class="progress-label">Orçamento</div>
+        </div>
+        <div class="progress-step">
+          <div class="progress-dot">5</div>
+          <div class="progress-label">Enviar</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main>
+    <div class="container">
+
+      <!-- PASSO 1 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-number">1</div>
+          <div class="step-title-wrap">
+            <div class="step-tag">Passo 1 de 5</div>
+            <div class="step-title">Configure os dados da sua empresa</div>
+          </div>
+        </div>
+        <div class="step-body">
+          <p class="step-intro">Antes de tudo, coloque os seus dados profissionais. Eles vão aparecer no cabeçalho de todos os orçamentos que você enviar — como o papel timbrado da sua empresa.</p>
+
+          <ul class="instruction-list">
+            <li>
+              <div class="instr-num">1</div>
+              <div>Toque no <strong>ícone de engrenagem ⚙️</strong> no canto superior direito da tela inicial.</div>
+            </li>
+            <li>
+              <div class="instr-num">2</div>
+              <div>Preencha a <strong>Razão Social / Nome</strong> — esse é o nome que vai aparecer no orçamento.</div>
+            </li>
+            <li>
+              <div class="instr-num">3</div>
+              <div>Informe o seu <strong>CNPJ ou CPF</strong>, telefone e e-mail de contato.</div>
+            </li>
+            <li>
+              <div class="instr-num">4</div>
+              <div>Preencha o <strong>endereço completo</strong>: CEP, rua, número, bairro, cidade e estado.</div>
+            </li>
+            <li>
+              <div class="instr-num">5</div>
+              <div>Toque em <strong>"Salvar Configurações"</strong>.</div>
+            </li>
+          </ul>
+
+          <div class="screen-preview">
+            <div class="screen-preview-label">O que você vai preencher</div>
+            <div class="field-row"><label>Razão Social / Nome</label><span>Ex: Pinturas do João</span></div>
+            <div class="field-row"><label>CNPJ / CPF</label><span>Ex: 123.456.789-00</span></div>
+            <div class="field-row"><label>Telefone</label><span>Ex: (31) 99999-0000</span></div>
+            <div class="field-row"><label>Email de Contato</label><span>Ex: joao@minhaempresa.com</span></div>
+            <div class="field-row"><label>Endereço</label><span>Rua, número, bairro, cidade, estado</span></div>
+          </div>
+
+          <div class="tip-box">
+            <div class="tip-icon">💡</div>
+            <div class="tip-text"><strong>Dica:</strong> Coloque o mesmo nome que você usa em notas fiscais ou contratos. Isso passa mais profissionalismo para o cliente.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-divider"><span>↓</span></div>
+
+      <!-- PASSO 2 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-number yellow">2</div>
+          <div class="step-title-wrap">
+            <div class="step-tag">Passo 2 de 5</div>
+            <div class="step-title">Cadastre seus serviços com preços</div>
+          </div>
+        </div>
+        <div class="step-body">
+          <p class="step-intro">O app já vem com uma lista de serviços pré-cadastrados com preços de referência do mercado. Você pode usar esses preços como base, editar, ou criar novos serviços.</p>
+
+          <ul class="instruction-list">
+            <li>
+              <div class="instr-num">1</div>
+              <div>Toque em <strong>"Serviços"</strong> na barra de navegação inferior.</div>
+            </li>
+            <li>
+              <div class="instr-num">2</div>
+              <div>Veja a lista de serviços disponíveis. Cada um mostra o <strong>preço base</strong> e a <strong>faixa de mercado</strong> (mínimo e máximo).</div>
+            </li>
+            <li>
+              <div class="instr-num">3</div>
+              <div>Para <strong>ver os detalhes</strong> de um serviço, toque nele. Você verá o preço base, mínimo e máximo.</div>
+            </li>
+            <li>
+              <div class="instr-num">4</div>
+              <div>Para <strong>editar o preço</strong> de um serviço, toque no ícone de lápis ✏️ na tela de detalhe.</div>
+            </li>
+            <li>
+              <div class="instr-num">5</div>
+              <div>Para <strong>criar um serviço novo</strong>, toque no botão amarelo <strong>"+ Novo"</strong> no topo da tela.</div>
+            </li>
+          </ul>
+
+          <div class="screen-preview">
+            <div class="screen-preview-label">Como os serviços aparecem</div>
+            <div class="field-row">
+              <label>Serviço</label>
+              <span>Acerto Cimento Parede (ate 3m)</span>
+            </div>
+            <div class="field-row">
+              <label>Preço Base</label><span>R$ 18,37/m²</span>
+            </div>
+            <div class="field-row">
+              <label>Faixa de mercado</label><span>R$ 11,00 mínimo — R$ 25,74 máximo</span>
+            </div>
+          </div>
+
+          <div class="tip-box">
+            <div class="tip-icon">💡</div>
+            <div class="tip-text"><strong>Dica:</strong> O preço base é o valor que será usado nos seus orçamentos. A faixa de mercado é só uma referência — ela mostra o quanto outros pintores cobram pelo mesmo serviço na sua região.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-divider"><span>↓</span></div>
+
+      <!-- PASSO 3 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-number">3</div>
+          <div class="step-title-wrap">
+            <div class="step-tag">Passo 3 de 5</div>
+            <div class="step-title">Cadastre um cliente</div>
+          </div>
+        </div>
+        <div class="step-body">
+          <p class="step-intro">Todo orçamento precisa estar vinculado a um cliente. Cadastre uma vez e reutilize em todos os próximos orçamentos.</p>
+
+          <ul class="instruction-list">
+            <li>
+              <div class="instr-num">1</div>
+              <div>Na tela inicial, toque em <strong>"Novo Cliente"</strong>. Ou vá em <strong>"Clientes"</strong> na barra inferior e toque em <strong>"+ Novo"</strong>.</div>
+            </li>
+            <li>
+              <div class="instr-num">2</div>
+              <div>Preencha o <strong>nome completo</strong> do cliente.</div>
+            </li>
+            <li>
+              <div class="instr-num">3</div>
+              <div>Adicione o <strong>WhatsApp</strong> — isso vai ser usado para enviar o orçamento diretamente.</div>
+            </li>
+            <li>
+              <div class="instr-num">4</div>
+              <div>Opcionalmente, adicione <strong>e-mail e endereço</strong> do cliente.</div>
+            </li>
+            <li>
+              <div class="instr-num">5</div>
+              <div>Salve. O cliente fica guardado e você pode <strong>ver todos os orçamentos dele</strong> numa aba só.</div>
+            </li>
+          </ul>
+
+          <div class="info-box">
+            <div class="tip-icon">📋</div>
+            <div class="info-text">Na página do cliente você verá 3 abas: <strong>Detalhes</strong> (contato e endereço), <strong>Orçamentos</strong> (histórico de todos os orçamentos feitos para ele) e <strong>Editar</strong> (para alterar os dados).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-divider"><span>↓</span></div>
+
+      <!-- PASSO 4 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-number yellow">4</div>
+          <div class="step-title-wrap">
+            <div class="step-tag">Passo 4 de 5</div>
+            <div class="step-title">Monte o orçamento</div>
+          </div>
+        </div>
+        <div class="step-body">
+          <p class="step-intro">Agora é a hora de montar o orçamento. Você seleciona os serviços, informa as metragens e o app calcula tudo automaticamente.</p>
+
+          <ul class="instruction-list">
+            <li>
+              <div class="instr-num">1</div>
+              <div>Na tela inicial, toque em <strong>"Novo Orçamento"</strong>. Ou vá em <strong>"Orçamentos"</strong> e toque em <strong>"+ Novo"</strong>.</div>
+            </li>
+            <li>
+              <div class="instr-num">2</div>
+              <div>Selecione o <strong>cliente</strong> que receberá o orçamento.</div>
+            </li>
+            <li>
+              <div class="instr-num">3</div>
+              <div>Informe o <strong>endereço da obra</strong> (pode ser diferente do endereço do cliente).</div>
+            </li>
+            <li>
+              <div class="instr-num">4</div>
+              <div>Adicione os <strong>serviços</strong>: escolha o serviço e informe a <strong>quantidade</strong> (m², metros lineares ou unidades).</div>
+            </li>
+            <li>
+              <div class="instr-num">5</div>
+              <div>Revise o <strong>total calculado automaticamente</strong>. Se quiser, adicione uma observação (ex: "Entrada 50%").</div>
+            </li>
+            <li>
+              <div class="instr-num">6</div>
+              <div>O orçamento fica salvo como <strong>Rascunho</strong> enquanto você não enviar.</div>
+            </li>
+          </ul>
+
+          <div class="screen-preview">
+            <div class="screen-preview-label">Exemplo de orçamento montado</div>
+            <div class="field-row"><label>Cliente</label><span>Orestes Quércia</span></div>
+            <div class="field-row"><label>Endereço da Obra</label><span>Casa Alphaville</span></div>
+            <div class="field-row"><label>Serviço</label><span>Acerto Cimento Parede — 150 m² × R$ 18,37 = R$ 2.755,50</span></div>
+            <div class="field-row"><label>Total</label><span style="color:#16a34a;font-weight:800;">R$ 2.755,50</span></div>
+          </div>
+
+          <div class="tip-box">
+            <div class="tip-icon">💡</div>
+            <div class="tip-text"><strong>Dica:</strong> Você pode adicionar quantos serviços quiser no mesmo orçamento. O total é atualizado automaticamente a cada item adicionado.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-divider"><span>↓</span></div>
+
+      <!-- PASSO 5 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-number green">5</div>
+          <div class="step-title-wrap">
+            <div class="step-tag">Passo 5 de 5</div>
+            <div class="step-title">Envie o orçamento e acompanhe</div>
+          </div>
+        </div>
+        <div class="step-body">
+          <p class="step-intro">Com o orçamento pronto, é hora de enviar para o cliente de forma profissional e acompanhar pelo painel.</p>
+
+          <ul class="instruction-list">
+            <li>
+              <div class="instr-num">1</div>
+              <div>Abra o orçamento e toque no <strong>ícone do WhatsApp</strong> (botão verde) para enviar o PDF diretamente para o cliente.</div>
+            </li>
+            <li>
+              <div class="instr-num">2</div>
+              <div>Você também pode tocar no <strong>ícone de download</strong> para salvar o PDF no celular e enviar por outro canal.</div>
+            </li>
+            <li>
+              <div class="instr-num">3</div>
+              <div>Após enviar, toque em <strong>"Marcar como Enviado"</strong> para atualizar o status.</div>
+            </li>
+            <li>
+              <div class="instr-num">4</div>
+              <div>Quando o cliente fechar negócio, altere o status para <strong>"Fechado"</strong>. Se recusar, marque como <strong>"Cancelado"</strong>.</div>
+            </li>
+            <li>
+              <div class="instr-num">5</div>
+              <div>Acompanhe tudo no <strong>painel inicial</strong>: quantos orçamentos estão pendentes, fechados, recusados e o valor total fechado no período.</div>
+            </li>
+          </ul>
+
+          <div class="badge-row">
+            <span class="badge badge-draft">⏱ Rascunho</span>
+            <span class="badge badge-sent">📤 Enviado / Pendente</span>
+            <span class="badge badge-closed">✅ Fechado</span>
+            <span class="badge badge-cancelled">✕ Cancelado</span>
+          </div>
+
+          <div class="info-box">
+            <div class="tip-icon">📊</div>
+            <div class="info-text">No painel de <strong>Orçamentos</strong> você pode filtrar por status (todos, pendentes, fechados, cancelados) e por período de data — ótimo para ver como foi o mês.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA FINAL -->
+      <div class="final-cta">
+        <h2>Pronto! Você já sabe usar<br><span>o PS Pro do zero.</span></h2>
+        <p>Abra o app agora e mande seu primeiro orçamento profissional em minutos.</p>
+        <a href="https://orcamentopro.ori.lat/dashboard" class="btn-primary">Abrir o PS Pro →</a>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
