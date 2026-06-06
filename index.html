@@ -1042,9 +1042,15 @@ footer {
 
 @media (max-width: 640px) {
   .hero-split { grid-template-columns: 1fr; min-height: auto; }
-  .hero-content-col { justify-content: flex-start; order: 2; padding-top: clamp(28px,5vw,40px); }
-  .hero-photo-col { min-height: 380px; order: 1; }
-  .hero-photo-col img { left: 50%; transform: translateX(-50%); height: 110%; object-position: top center; bottom: auto; top: -16px; }
+  .hero-content-col { justify-content: flex-start; order: 2; padding-top: clamp(24px,5vw,36px); }
+  .hero-photo-col { order: 1; padding-top: 68px; position: relative; min-height: 0; }
+  .hero-photo-col img {
+    position: static;
+    width: min(340px, 92vw);
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
   .hero-inner { grid-template-columns: 1fr; }
   .hero-mockup { margin-top: clamp(24px, 6vw, 40px); }
   .hero-mockup img { width: min(320px, 70vw); }
@@ -1101,7 +1107,7 @@ footer {
       <div class="hero-content">
         <div class="hero-badge">Para pintores que cansaram de trabalhar no sufoco</div>
 
-        <h1>Enquanto você chuta preço,<br>seu concorrente fecha<br><em>as suas obras.</em></h1>
+        <h1>Enquanto você chuta preço, seu concorrente fecha <em>as suas obras.</em></h1>
 
         <p class="hero-sub">
           Com o PS Pro você para de chutar e começa a cobrar o que vale — orçamentos profissionais em <strong>menos de 3 minutos</strong>, do celular, na obra ou em casa.
