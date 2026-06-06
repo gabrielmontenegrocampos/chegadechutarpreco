@@ -404,11 +404,11 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
 .feature.reverse .feature-text,
 .feature.reverse .feature-visual { direction: ltr; }
 .feature-eyebrow {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: block;
   font-size: 11.5px; font-weight: 700;
   letter-spacing: .12em; text-transform: uppercase;
-  color: var(--gold-dark); background: var(--gold-soft);
-  padding: 6px 14px; border-radius: 50px; margin-bottom: 16px;
+  color: var(--gold-dark);
+  margin-bottom: 14px;
 }
 .feature-headline {
   font-weight: 800; font-size: clamp(27.3px, 3.99vw, 39.9px);
@@ -1030,7 +1030,7 @@ footer {
   .hero-mockup img { width: min(320px, 70vw); }
   .feature-inner { grid-template-columns: 1fr; }
   .feature.reverse .feature-inner { direction: ltr; }
-  .feature-visual { order: -1; }
+  .feature-visual { order: 1; }
   .bonus-inner { grid-template-columns: 1fr; }
 }
 
