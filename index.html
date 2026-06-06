@@ -988,6 +988,18 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
   color: var(--text-mid); line-height: 1.65;
 }
 
+/* ---------- LOGO (shared) ---------- */
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--white); }
+.logo-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.logo-icon svg { width: 22px; height: 22px; color: var(--teal); }
+.logo-text { line-height: 1.15; }
+.logo-name { font-weight: 800; font-size: 15px; display: block; letter-spacing: -.01em; }
+.logo-sub  { font-size: 10.5px; color: rgba(255,255,255,.45); display: block; margin-top: 1px; font-weight: 500; }
+
 /* ---------- FOOTER ---------- */
 footer {
   background: var(--teal-dark); padding: clamp(40px, 5vw, 52px) 0 clamp(24px, 3vw, 28px);
