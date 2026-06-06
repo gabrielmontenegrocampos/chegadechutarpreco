@@ -150,7 +150,7 @@ nav {
 
 .hero-split {
   display: grid;
-  grid-template-columns: 48% 52%;
+  grid-template-columns: 55% 45%;
   width: 100%;
   min-height: 100dvh;
 }
@@ -158,15 +158,13 @@ nav {
 .hero-content-col {
   display: flex;
   align-items: center;
-  overflow: hidden;
-  padding: clamp(110px,14vw,140px) clamp(24px,4vw,56px) clamp(64px,8vw,100px) max(24px, calc((100vw - 1160px) / 2 + 24px));
+  padding: clamp(100px,12vw,140px) clamp(32px,4vw,64px) clamp(60px,8vw,100px) clamp(24px,5vw,80px);
   position: relative; z-index: 2;
 }
 
 .hero-content {
   width: 100%;
-  min-width: 0;
-  padding-right: clamp(32px, 6vw, 64px);
+  max-width: 560px;
   text-align: left;
 }
 
@@ -199,7 +197,6 @@ nav {
   display: grid; grid-template-columns: 1fr;
   align-items: center;
   position: relative; z-index: 2;
-  max-width: 480px;
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -1020,7 +1017,7 @@ footer {
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 968px) {
-  .hero-split { grid-template-columns: 52% 48%; }
+  .hero-split { grid-template-columns: 58% 42%; }
 }
 
 @media (max-width: 640px) {
@@ -1079,7 +1076,7 @@ footer {
 <!-- HERO -->
 <section class="hero" id="inicio">
   <div class="hero-split">
-    <div class="hero-content-col" style="width: 700px">
+    <div class="hero-content-col">
       <div class="hero-content">
         <div class="hero-badge">Aplicativo para pintores profissionais</div>
 
