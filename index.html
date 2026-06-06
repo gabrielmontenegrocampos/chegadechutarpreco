@@ -139,14 +139,41 @@ nav {
 
 /* ---------- HERO ---------- */
 .hero {
-  background: linear-gradient(160deg, var(--teal-dark) 0%, #0A1727 100%);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Ccircle cx='14' cy='14' r='1' fill='rgba(255%2C255%2C255%2C.035)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 70% 55% at 88% 12%, rgba(232,168,23,.16) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 10% 88%, rgba(35,77,116,.25) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 50% 110%, rgba(27,58,92,.35) 0%, transparent 50%),
+    linear-gradient(165deg, #0d2035 0%, #080e1c 48%, #060b18 100%);
   min-height: 100dvh;
   display: flex;
   position: relative;
   overflow: hidden;
   padding: 0;
 }
-.hero::before { display: none; }
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 560px; height: 560px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,168,23,.09) 0%, rgba(232,168,23,.03) 45%, transparent 70%);
+  top: -180px; right: -130px;
+  animation: orb-float 14s ease-in-out infinite;
+  pointer-events: none; z-index: 0;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 420px; height: 420px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(30,100,180,.11) 0%, rgba(20,70,140,.04) 45%, transparent 70%);
+  bottom: -130px; left: 8%;
+  animation: orb-float 11s ease-in-out infinite reverse;
+  pointer-events: none; z-index: 0;
+}
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(18px, -26px) scale(1.07); }
+  66%       { transform: translate(-12px, 16px) scale(0.94); }
+}
 
 .hero-split {
   display: grid;
@@ -208,8 +235,8 @@ nav {
 }
 .hero h1 {
   font-weight: 800;
-  font-size: clamp(36px, 5.5vw, 60px);
-  line-height: 1.05; color: var(--white);
+  font-size: clamp(46px, 7vw, 76px);
+  line-height: 1.04; color: var(--white);
   letter-spacing: -.04em;
 }
 .hero h1 em {
@@ -221,10 +248,10 @@ nav {
   background: var(--gold); border-radius: 3px; opacity: .35;
 }
 .hero-sub {
-  font-size: clamp(14px, 1.7vw, 16.5px);
-  color: rgba(255,255,255,.75);
-  margin: clamp(16px, 2.5vw, 24px) 0 clamp(24px, 3.5vw, 32px);
-  max-width: min(340px, 100%); font-weight: 400; line-height: 1.6;
+  font-size: clamp(15px, 1.8vw, 17.5px);
+  color: rgba(255,255,255,.78);
+  margin: clamp(20px, 2.8vw, 28px) 0 clamp(28px, 4vw, 40px);
+  max-width: min(420px, 100%); font-weight: 400; line-height: 1.65;
   overflow-wrap: break-word; word-break: break-word;
 }
 .hero-sub strong { color: var(--gold); font-weight: 700; }
@@ -1015,9 +1042,9 @@ footer {
 
 @media (max-width: 640px) {
   .hero-split { grid-template-columns: 1fr; min-height: auto; }
-  .hero-content-col { justify-content: flex-start; }
-  .hero-photo-col { min-height: 360px; }
-  .hero-photo-col img { left: 50%; transform: translateX(-50%); height: 100%; object-position: bottom center; }
+  .hero-content-col { justify-content: flex-start; order: 2; padding-top: clamp(28px,5vw,40px); }
+  .hero-photo-col { min-height: 380px; order: 1; }
+  .hero-photo-col img { left: 50%; transform: translateX(-50%); height: 110%; object-position: top center; bottom: auto; top: -16px; }
   .hero-inner { grid-template-columns: 1fr; }
   .hero-mockup { margin-top: clamp(24px, 6vw, 40px); }
   .hero-mockup img { width: min(320px, 70vw); }
@@ -1072,20 +1099,13 @@ footer {
   <div class="hero-split">
     <div class="hero-content-col">
       <div class="hero-content">
-        <div class="hero-badge">Aplicativo para pintores profissionais</div>
+        <div class="hero-badge">Para pintores que cansaram de trabalhar no sufoco</div>
 
-        <h1>Chega de<br><em>Chutar</em> Preço!</h1>
+        <h1>Enquanto você chuta preço,<br>seu concorrente fecha<br><em>as suas obras.</em></h1>
 
         <p class="hero-sub">
-          O app que organiza seus clientes, monta seu catálogo de serviços e gera orçamentos profissionais — <strong>em 3 minutos</strong>, do celular, na obra ou em casa.
+          Com o PS Pro você para de chutar e começa a cobrar o que vale — orçamentos profissionais em <strong>menos de 3 minutos</strong>, do celular, na obra ou em casa.
         </p>
-
-        <div class="hero-actions">
-          <a href="#oferta" class="btn-primary">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            Garantir meu acesso
-          </a>
-        </div>
       </div>
     </div>
     <div class="hero-photo-col">
@@ -1696,14 +1716,14 @@ footer {
   // Safety net
   setTimeout(() => reveals.forEach(el => el.classList.add('visible')), 2000);
 
-  // Floating CTA visibility
+  // Floating CTA visibility — show after user scrolls past hero
   const floatingCta = document.getElementById('floatingCta');
-  const heroCta = document.querySelector('.hero-actions');
-  if (heroCta) {
+  const heroSection = document.querySelector('.hero');
+  if (heroSection && floatingCta) {
     const heroObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => floatingCta.classList.toggle('show', !e.isIntersecting));
-    }, { threshold: 0.5 });
-    heroObserver.observe(heroCta);
+    }, { threshold: 0.1 });
+    heroObserver.observe(heroSection);
   }
 
   // Nav shadow on scroll
