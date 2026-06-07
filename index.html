@@ -965,20 +965,18 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
 .price-from s { color: rgba(255,255,255,.4); }
 .price-installments-label {
   font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  color: rgba(255,255,255,.55); margin-bottom: 2px;
+  color: rgba(255,255,255,.55);
 }
 .price-main {
-  display: flex; align-items: flex-start; justify-content: center; gap: 3px; margin: 4px 0;
+  display: flex; align-items: flex-end; justify-content: center; gap: 4px; margin: 4px 0;
 }
-.price-currency { font-weight: 700; font-size: clamp(22px, 3vw, 28px); color: white; padding-top: clamp(10px,1.5vw,16px); }
+.price-prefix {
+  display: flex; flex-direction: column; align-items: flex-end; padding-bottom: 10px;
+}
+.price-currency { font-weight: 700; font-size: clamp(22px, 3vw, 28px); color: white; }
 .price-amount {
   font-weight: 800; font-size: clamp(72px, 11vw, 100px);
   color: white; line-height: 1; letter-spacing: -.05em;
-}
-.price-cents {
-  font-weight: 800; font-size: clamp(32px, 4.5vw, 46px);
-  color: white; line-height: 1; letter-spacing: -.03em;
-  padding-top: clamp(12px,1.8vw,18px);
 }
 .price-avista {
   color: rgba(255,255,255,.5); font-size: 14px; margin-top: 6px;
@@ -1760,17 +1758,17 @@ footer {
     <div class="price-card reveal">
       <div class="price-card-tag">Acesso vitalício</div>
       <div class="price-from"><s>De R$ 1.186</s></div>
-      <div class="price-installments-label">9×</div>
       <div class="price-main">
-        <span class="price-currency">R$</span>
-        <span class="price-amount">8</span>
-        <span class="price-cents">,80</span>
+        <div class="price-prefix">
+          <span class="price-installments-label">9×</span>
+          <span class="price-currency">R$</span>
+        </div>
+        <span class="price-amount">8,80</span>
       </div>
-      <div class="price-avista">no cartão · ou <strong>à vista R$ 67,00</strong></div>
+      <div class="price-avista"><strong>à vista R$ 67,00</strong></div>
       <a href="https://pay.hotmart.com/X104648375J?checkoutMode=10&amp;bid=1779792240767" class="btn-cta-big">Quero o app + bônus por R$ 67</a>
       <div class="price-scarcity">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-        <strong>Preço válido para os 50 primeiros</strong> — após isso, volta ao valor cheio.
+        <strong>Preço válido para os 50 primeiros</strong>
       </div>
     </div>
   </div>
