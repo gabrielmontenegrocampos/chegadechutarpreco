@@ -195,6 +195,10 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
   0%,100% { opacity: 1; transform: scale(1); }
   50%     { opacity: .4; transform: scale(.6); }
 }
+@keyframes aurora {
+  from { background-position: 50% 50%, 50% 50%; }
+  to   { background-position: 350% 50%, 350% 50%; }
+}
 .hero h1 {
   font-weight: 800;
   font-size: clamp(43.9px, 6.63vw, 71.8px);
@@ -668,11 +672,22 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
 .mock-orc-btn-pdf { background: var(--bg); color: var(--text-mid); border: 1px solid var(--border); }
 
 /* ---------- HOW (steps) ---------- */
-.how { background: var(--teal); position: relative; overflow: hidden; }
-.how::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 30% 50%, rgba(232,168,23,.05), transparent 50%);
-  pointer-events: none;
+.how { background: #010d1e; position: relative; overflow: hidden; }
+.how-aurora {
+  position: absolute; inset: -20px; pointer-events: none; z-index: 0;
+  background-image:
+    repeating-linear-gradient(100deg, #010d1e 0%, #010d1e 7%, transparent 10%, transparent 12%, #010d1e 16%),
+    repeating-linear-gradient(100deg,
+      #0e7490 10%, #1d4ed8 15%, #0891b2 20%, #7c3aed 25%, #0f766e 30%
+    );
+  background-size: 300%, 200%;
+  background-position: 50% 50%, 50% 50%;
+  filter: blur(12px);
+  opacity: .55;
+  animation: aurora 60s linear infinite;
+  -webkit-mask-image: radial-gradient(ellipse at 65% 40%, black 15%, transparent 72%);
+  mask-image: radial-gradient(ellipse at 65% 40%, black 15%, transparent 72%);
+  will-change: background-position;
 }
 .how .container { position: relative; z-index: 1; }
 .how .section-title { color: white; }
@@ -685,21 +700,28 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
   margin-top: clamp(48px, 7vw, 64px);
 }
 .step {
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.07);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255,255,255,.13);
   border-radius: var(--radius); padding: 28px 24px;
   transition: all .35s var(--ease);
 }
-.step:hover { background: rgba(255,255,255,.08); transform: translateY(-4px); }
+.step:hover {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.22);
+  transform: translateY(-5px);
+  box-shadow: 0 24px 48px rgba(0,0,0,.35);
+}
 .step-number {
   width: 48px; height: 48px; border-radius: 12px;
   background: var(--gold); color: var(--teal);
   font-weight: 800; font-size: 20px;
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 18px; box-shadow: 0 6px 20px rgba(232,168,23,.3);
+  margin-bottom: 18px; box-shadow: 0 6px 20px rgba(232,168,23,.35);
 }
 .step h3 { font-size: 17px; font-weight: 700; color: white; margin-bottom: 8px; line-height: 1.3; }
-.step p  { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.6; }
+.step p  { font-size: 14px; color: rgba(255,255,255,.62); line-height: 1.6; }
 
 /* ---------- BONUS ---------- */
 .bonus { background: #010815; }
@@ -1546,6 +1568,7 @@ footer {
 
 <!-- COMO FUNCIONA -->
 <section class="section how" id="como-funciona">
+  <div class="how-aurora" aria-hidden="true"></div>
   <div class="container">
     <div class="how-header reveal">
       <h2 class="section-title">Em 3 passos você sai do chute <span style="color:var(--gold)">pra sempre</span>.</h2>
