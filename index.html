@@ -827,8 +827,12 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
 .stack-price-from { display: block; font-size: 11px; color: var(--text-muted); font-weight: 500; margin-bottom: 2px; }
 .stack-totals {
   margin-top: 8px; padding: 20px;
-  background: var(--bg-warm); border-radius: var(--radius);
-  border: 2px dashed var(--gold);
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border-radius: var(--radius);
+  border: 1px solid rgba(232,168,23,.25);
+  box-shadow: 0 8px 32px rgba(232,168,23,.08), 0 2px 8px rgba(0,0,0,.04);
 }
 .stack-total-row {
   display: flex; align-items: center; justify-content: space-between;
