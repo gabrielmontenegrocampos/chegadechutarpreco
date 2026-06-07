@@ -915,48 +915,31 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
 .oferta .section-title span { color: var(--gold); }
 .oferta .section-sub { color: rgba(255,255,255,.65); margin-left: auto; margin-right: auto; }
 
-/* Origami cranes */
-.oferta-origami { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-.drifter { position: absolute; animation: drift linear infinite; will-change: transform; }
-.origami-crane { position: relative; width: 80px; height: 52px; animation: bob ease-in-out infinite; }
-.crane-body {
-  position: absolute; width: 32px; height: 32px;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  top: 8px; left: 24px;
+/* Aurora bg oferta */
+.oferta-aurora {
+  position: absolute; inset: -20px; pointer-events: none; z-index: 0;
+  background-image:
+    repeating-linear-gradient(100deg, #0a2540 0%, #0a2540 7%, transparent 10%, transparent 12%, #0a2540 16%),
+    repeating-linear-gradient(100deg,
+      #0e4d6e 10%, #0a3352 15%, #155e75 20%, #0c3d58 25%, #0e5a7a 30%
+    );
+  background-size: 300%, 200%;
+  background-position: 50% 50%, 50% 50%;
+  filter: blur(14px);
+  opacity: .5;
+  animation: aurora 90s linear infinite;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%);
+  mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%);
+  will-change: background-position;
 }
-.crane-wing-left {
-  position: absolute; width: 30px; height: 24px;
-  clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
-  top: 12px; left: 0; transform-origin: 100% 50%;
-  animation: flap-l ease-in-out infinite alternate;
+/* Scarcity */
+.price-scarcity {
+  margin-top: 14px;
+  font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,.6);
+  display: flex; align-items: center; justify-content: center; gap: 6px;
 }
-.crane-wing-right {
-  position: absolute; width: 30px; height: 24px;
-  clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
-  top: 12px; right: 0; transform-origin: 0% 50%;
-  animation: flap-r ease-in-out infinite alternate;
-}
-.crane-tail {
-  position: absolute; width: 14px; height: 12px;
-  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
-  bottom: 0; left: 33px;
-}
-@keyframes drift {
-  0%   { transform: translateX(-15vw); }
-  100% { transform: translateX(115vw); }
-}
-@keyframes bob {
-  0%, 100% { transform: translateY(-8px); }
-  50%       { transform: translateY(8px); }
-}
-@keyframes flap-l {
-  from { transform: rotateX(-22deg); }
-  to   { transform: rotateX(18deg); }
-}
-@keyframes flap-r {
-  from { transform: rotateX(18deg); }
-  to   { transform: rotateX(-22deg); }
-}
+.price-scarcity strong { color: var(--gold); }
 
 /* Glassmorphism price card */
 .price-card {
@@ -1019,26 +1002,6 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
 .btn-cta-big:hover::after { left: 120%; }
 .btn-cta-big:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 14px 36px rgba(232,168,23,.5); }
 .btn-cta-big svg { width: 22px; height: 22px; }
-.guarantee {
-  display: flex; align-items: center; justify-content: center; gap: 12px;
-  margin-top: 24px; padding: 16px;
-  background: rgba(255,255,255,.08); border-radius: 14px; text-align: left;
-}
-.guarantee-icon {
-  width: 42px; height: 42px; border-radius: 50%;
-  background: var(--green); color: white;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.guarantee-icon svg { width: 20px; height: 20px; }
-.guarantee-title { font-weight: 800; font-size: 14px; line-height: 1.2; color: white; }
-.guarantee-text { font-size: 12.5px; color: rgba(255,255,255,.65); margin-top: 2px; line-height: 1.4; }
-.urgency {
-  margin-top: 16px; padding: 10px 16px;
-  background: rgba(255,255,255,.08); border-radius: 10px;
-  font-size: 13px; color: var(--gold); font-weight: 700;
-  display: inline-flex; align-items: center; gap: 6px;
-  width: 100%; justify-content: center;
-}
 
 /* ---------- GARANTIA ---------- */
 .garantia { background: var(--bg-warm); }
@@ -1788,7 +1751,7 @@ footer {
 
 <!-- OFERTA -->
 <section class="section oferta" id="oferta">
-  <div class="oferta-origami" aria-hidden="true"></div>
+  <div class="oferta-aurora" aria-hidden="true"></div>
   <div class="container">
     <div class="reveal">
       <h2 class="section-title">Pare de chutar.<br><span>Comece a usar hoje.</span></h2>
@@ -1805,14 +1768,10 @@ footer {
       </div>
       <div class="price-avista">no cartão · ou <strong>à vista R$ 67,00</strong></div>
       <a href="https://pay.hotmart.com/X104648375J?checkoutMode=10&amp;bid=1779792240767" class="btn-cta-big">Quero o app + bônus por R$ 67</a>
-      <div class="guarantee">
-        <div class="guarantee-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg></div>
-        <div>
-          <div class="guarantee-title">Garantia incondicional de 7 dias</div>
-          <div class="guarantee-text">Se em 7 dias você achar que não valeu, devolvemos seu dinheiro. O risco é todo nosso.</div>
-        </div>
+      <div class="price-scarcity">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <strong>Preço válido para os 50 primeiros</strong> — após isso, volta ao valor cheio.
       </div>
-      <div class="urgency">Preço promocional por tempo limitado</div>
     </div>
   </div>
 </section>
@@ -1951,42 +1910,6 @@ footer {
     heroObserver.observe(heroSection);
   }
 
-  /* Origami cranes generator */
-  (function(){
-    const container = document.querySelector('.oferta-origami');
-    if (!container) return;
-    const rnd = (a,b) => Math.random()*(b-a)+a;
-    const palettes = [
-      ['rgba(232,168,23,.14)','rgba(232,168,23,.10)','rgba(232,168,23,.10)','rgba(232,168,23,.09)'],
-      ['rgba(14,116,144,.16)','rgba(14,116,144,.11)','rgba(14,116,144,.11)','rgba(14,116,144,.09)'],
-    ];
-    for (let i = 0; i < 14; i++) {
-      const dur   = rnd(40, 70);
-      const delay = rnd(-70, 0);
-      const scale = rnd(0.22, 0.72);
-      const top   = rnd(4, 92);
-      const bob   = rnd(2.5, 4.5);
-      const flap  = rnd(1.8, 3.2);
-      const p     = palettes[i % 2];
-
-      const d = document.createElement('div');
-      d.className = 'drifter';
-      d.style.cssText = `top:${top}%;animation-duration:${dur}s;animation-delay:${delay}s`;
-
-      const c = document.createElement('div');
-      c.className = 'origami-crane';
-      c.style.cssText = `transform:scale(${scale});animation-duration:${bob}s`;
-
-      c.innerHTML = `
-        <div class="crane-body" style="background:${p[0]}"></div>
-        <div class="crane-wing-left" style="background:${p[1]};animation-duration:${flap}s"></div>
-        <div class="crane-wing-right" style="background:${p[2]};animation-duration:${flap}s;animation-delay:${rnd(-1,0)}s"></div>
-        <div class="crane-tail" style="background:${p[3]}"></div>
-      `;
-      d.appendChild(c);
-      container.appendChild(d);
-    }
-  })();
 
 </script>
 
