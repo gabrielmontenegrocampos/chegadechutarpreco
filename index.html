@@ -840,7 +840,7 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
   gap: 12px; padding: 4px 0;
 }
 .stack-total-label { font-weight: 600; font-size: clamp(14px, 1.8vw, 15px); color: var(--text-mid); }
-.stack-total-value { font-weight: 800; font-size: clamp(14px, 1.8vw, 16px); color: var(--text-muted); text-decoration: line-through; }
+.stack-total-value { font-weight: 800; font-size: clamp(14px, 1.8vw, 16px); color: var(--text-muted); text-decoration: line-through; white-space: nowrap; flex-shrink: 0; }
 .stack-final {
   margin-top: 12px; padding-top: 12px;
   border-top: 1px solid rgba(232,168,23,.3);
@@ -1698,7 +1698,7 @@ footer {
 
         <div class="stack-totals">
           <div class="stack-total-row">
-            <span class="stack-total-label">Valor total se comprado separado</span>
+            <span class="stack-total-label">Se comprado separado</span>
             <span class="stack-total-value">R$ 1.186</span>
           </div>
           <div class="stack-total-row">
@@ -1709,7 +1709,7 @@ footer {
             <span class="stack-final-label">Você paga hoje:</span>
             <span class="stack-final-value">R$ 67</span>
           </div>
-          <div class="stack-savings">Você economiza <strong>R$ 1.139</strong> · ou parcele em 9× de R$ 8,80</div>
+          <div class="stack-savings"><strong>9× de R$ 8,80</strong> no cartão · ou <strong>à vista R$ 67</strong></div>
         </div>
         <a href="https://pay.hotmart.com/X104648375J?checkoutMode=10&amp;bid=1779792240767" class="stack-cta">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
