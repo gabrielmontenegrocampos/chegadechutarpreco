@@ -963,17 +963,10 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
 }
 .price-from { color: rgba(255,255,255,.45); font-size: 14px; margin-bottom: 8px; }
 .price-from s { color: rgba(255,255,255,.4); }
-.price-installments-label {
-  font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  color: rgba(255,255,255,.55);
-}
 .price-main {
   display: flex; align-items: flex-end; justify-content: center; gap: 4px; margin: 4px 0;
 }
-.price-prefix {
-  display: flex; flex-direction: column; align-items: flex-end; padding-bottom: 10px;
-}
-.price-currency { font-weight: 700; font-size: clamp(22px, 3vw, 28px); color: white; }
+.price-currency { font-weight: 700; font-size: clamp(22px, 3vw, 28px); color: white; padding-bottom: 8px; }
 .price-amount {
   font-weight: 800; font-size: clamp(72px, 11vw, 100px);
   color: white; line-height: 1; letter-spacing: -.05em;
@@ -1752,19 +1745,16 @@ footer {
   <div class="container">
     <div class="reveal">
       <h2 class="section-title">Pare de chutar.<br><span>Comece a usar hoje.</span></h2>
-      <p class="section-sub">Acesso imediato. Garantia de 7 dias. <strong style="color:white">Preço promocional.</strong></p>
+      <p class="section-sub">Acesso imediato. Garantia de 7 dias.<br><strong style="color:white">Preço promocional.</strong></p>
     </div>
     <div class="price-card reveal">
       <div class="price-card-tag">Acesso vitalício</div>
       <div class="price-from"><s>De R$ 1.186</s></div>
       <div class="price-main">
-        <div class="price-prefix">
-          <span class="price-installments-label">9×</span>
-          <span class="price-currency">R$</span>
-        </div>
-        <span class="price-amount">8,80</span>
+        <span class="price-currency">R$</span>
+        <span class="price-amount">67</span>
       </div>
-      <div class="price-avista"><strong>à vista R$ 67,00</strong></div>
+      <div class="price-avista">ou parcele em <strong>9× de R$ 8,80</strong></div>
       <a href="https://pay.hotmart.com/X104648375J?checkoutMode=10&amp;bid=1779792240767" class="btn-cta-big">Quero o app + bônus por R$ 67</a>
       <div class="price-scarcity">
         <strong>Preço válido para os 50 primeiros</strong>
