@@ -1126,6 +1126,12 @@ footer {
 .floating-cta svg { width: 18px; height: 18px; }
 
 /* ---------- RESPONSIVE ---------- */
+@media (min-width: 641px) {
+  .hero-content { text-align: left; margin: 0; }
+  .hero h1 { font-size: clamp(39.5px, 5.97vw, 64.6px); }
+  .hero-sub { font-size: clamp(15.6px, 1.88vw, 18.3px); }
+}
+
 @media (max-width: 968px) {
   .hero-split { grid-template-columns: 1.1fr .9fr; }
   .hero-content-col { padding-left: clamp(20px,4vw,40px); }
