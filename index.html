@@ -384,24 +384,42 @@ noscript + .reveal, .no-js .reveal { opacity: 1; transform: none; }
 
 /* ---------- SOLUÇÃO ---------- */
 .solucao { background: var(--white); }
-.solucao-inner {
-  display: flex; flex-direction: column; align-items: center;
-  text-align: center; gap: clamp(32px, 5vw, 48px);
+.solucao-headline {
+  text-align: center; max-width: 800px; margin: 0 auto clamp(40px, 6vw, 56px);
 }
-.solucao-content { max-width: 700px; }
-.solucao-content h2 {
+.solucao-headline h2 {
   font-weight: 800; font-size: clamp(29.4px, 5.25vw, 48.3px);
   line-height: 1.08; letter-spacing: -.03em; margin-bottom: 20px;
 }
-.solucao-content h2 span { color: var(--gold); }
-.solucao-content p {
+.solucao-headline h2 span { color: var(--gold); }
+.solucao-headline p {
   font-size: clamp(15.75px, 2.1vw, 17.9px); color: var(--text-mid); line-height: 1.7;
 }
-.solucao-content p + p { margin-top: 14px; }
-.solucao-content strong { color: var(--text); font-weight: 700; }
+.solucao-inner {
+  display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+  gap: clamp(32px, 5vw, 64px);
+}
+.solucao-list {
+  list-style: none; padding: 0; margin: 0 0 28px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.solucao-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: clamp(14.5px, 1.8vw, 16px); line-height: 1.5; color: var(--text-mid);
+}
+.solucao-list li::before {
+  content: '✓'; flex-shrink: 0;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--green-soft); color: var(--green);
+  font-size: 12px; font-weight: 800;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.solucao-note { font-size: clamp(14px, 1.8vw, 15px); color: var(--text-mid); }
+.solucao-note strong { color: var(--text); font-weight: 700; }
 .solucao-mock { display: flex; justify-content: center; }
 .solucao-mock img {
-  width: min(340px, 78vw);
+  width: min(380px, 100%);
   filter: drop-shadow(0 8px 16px rgba(0,0,0,.18)) drop-shadow(0 32px 64px rgba(0,0,0,.28));
   animation: heroFloat 6s ease-in-out infinite;
 }
@@ -1173,6 +1191,9 @@ footer {
   .feature.reverse .feature-inner { direction: ltr; }
   .feature-visual { order: 1; }
   .bonus-inner { grid-template-columns: 1fr; }
+  .solucao-inner { grid-template-columns: 1fr; }
+  .solucao-mock { order: 2; }
+  .solucao-bullets { order: 1; }
 }
 
 @media (max-width: 600px) {
@@ -1327,11 +1348,20 @@ footer {
 <!-- SOLUÇÃO INTRO -->
 <section class="section solucao" id="solucao">
   <div class="container">
+    <div class="solucao-headline reveal">
+      <h2>Para de trabalhar de graça.<br>O <span>PS Pro</span> calcula tudo antes de você bater o martelo.</h2>
+      <p>Orçamento, material, mão de obra e lucro real — tudo no celular, em qualquer obra do Brasil.</p>
+    </div>
     <div class="solucao-inner">
-      <div class="solucao-content reveal">
-        <h2>Para de trabalhar de graça.<br>O <span>PS Pro</span> calcula tudo antes de você bater o martelo.</h2>
-        <p>Orçamento, material, mão de obra e lucro real — tudo no celular, em qualquer obra do Brasil.</p>
-        <p><strong>Sem mensalidade</strong>. Pagou uma vez, é seu pra sempre.</p>
+      <div class="solucao-bullets reveal">
+        <ul class="solucao-list">
+          <li>Monte orçamentos em minutos — informe as medidas, o app calcula tudo</li>
+          <li>Tinta, mão de obra e margem calculados automaticamente</li>
+          <li>Envie o orçamento por WhatsApp com 1 clique</li>
+          <li>Painel com lucro real de cada obra</li>
+          <li>Histórico completo de clientes e serviços</li>
+        </ul>
+        <p class="solucao-note"><strong>Sem mensalidade.</strong> Pagou uma vez, é seu pra sempre.</p>
       </div>
       <div class="solucao-mock reveal reveal-d1">
         <img src="mockup/mockupmobiles.png" alt="App PS Pro — dashboard e orçamento no celular">
